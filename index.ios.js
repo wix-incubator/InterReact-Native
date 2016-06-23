@@ -6,7 +6,7 @@ import firebaeService from './src/services/firebase';
 registerScreens(); // this is where you register all of your app's screens
 
 // connecting fitrebae
-const confIf = '4255ec05-da65-b654-8c2d-bb7f71221c31';
+const confId = '4255ec05-da65-b654-8c2d-bb7f71221c31';
 firebaeService.connect(confId);
 
 // start the app

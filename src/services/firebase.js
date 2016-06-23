@@ -11,8 +11,7 @@ const defaultSettings = {
 };
 
 class FirebaseService {
-  constructor(confId) {
-    this.confId = confId;
+  constructor() {
     // autobind(this);
     this.firebaseApp = null;
     // this.connect();
@@ -38,7 +37,8 @@ class FirebaseService {
     }
   }
 
-  async connect(token) {
+  async connect(confId) {
+    this.confId = confId;
     this.firebaseApp = new Firebase(FIREBASE_ENDPOINT);
     this.confNode = this.firebaseApp.child(`confs/${this.confId}`);
 
