@@ -8,7 +8,9 @@ import {
 } from 'react-native';
 import {mapStateToProps} from '../../store';
 import {connect} from 'react-redux';
+import * as actions from '../../store/constants/actions';
 import {Navigation} from 'react-native-navigation';
+import firebaseService from '../../services/firebase';
 import Countdown, {TickEmitter} from './Countdown';
 
 class FirstTabScreen extends Component {
@@ -16,9 +18,18 @@ class FirstTabScreen extends Component {
   constructor(props) {
     super(props);
     this.ticker = new TickEmitter('eventTicker');
+    constructor(props) {
+      super(props);
+      //firebaseService.readConf().then(data => this.props.dispatch({type: actions.UPDATE_STATE, data}));
+      firebaseService.listenToConfChanges(data => {
+        if (data) {
+          //console.warn('listen', data)
+          this.props.dispatch({type: actions.UPDATE_STATE, data});
+        }
+      })
   }
 
-  rsvp() {
+  rsvp(){
     Navigation.showModal({
       screen: 'details.RSVPScreen',
       title: 'RSVP',
