@@ -6,7 +6,7 @@
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
-    "firebase": "^3.0.5",
+    "firebase": "^2.4.2",
     "react": "15.1.0",
     "react-native": "^0.28.0",
     "react-native-custom-segmented-control": "^3.0.4",
