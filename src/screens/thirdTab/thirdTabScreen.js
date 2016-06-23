@@ -6,8 +6,10 @@ import {
   Text,
   View
 } from 'react-native';
+import {mapStateToProps} from '../../store';
+import {connect} from 'react-redux';
 
-export default class ThirdTabScreen extends Component {
+class ThirdTabScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -44,3 +46,5 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+export default connect(mapStateToProps)(ThirdTabScreen);

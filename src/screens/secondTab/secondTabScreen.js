@@ -6,13 +6,14 @@ import {
   View,
   ListView
 } from 'react-native';
+import {mapStateToProps} from '../../store';
+import {connect} from 'react-redux';
 
-const atttendeesData = ['Arron Greenwald', 'Ethan Sharabi', 'Ran Greenbaerg', 'Dan Abramov']
-
+const atttendeesData = ['Arron Greenwald', 'Ethan Sharabi', 'Ran Greenbaerg', 'Dan Abramov'];
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
-export default class SecondTabScreen extends Component {
-
+class SecondTabScreen extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -55,3 +56,5 @@ const styles = StyleSheet.create({
 
   }
 });
+
+export default connect(mapStateToProps)(SecondTabScreen);

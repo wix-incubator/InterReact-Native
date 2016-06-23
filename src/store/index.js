@@ -11,6 +11,4 @@ const middlewares = [
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 export const store = createStoreWithMiddleware(reducers);
 
-export const mapStateToProps = state => ({
-
-});
+export const mapStateToProps = state => state;
