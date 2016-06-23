@@ -46,8 +46,8 @@ export default class TimerComponent extends Component {
 
   calcTimeLeft(startTime) {
     const now = Date.now();
-    const timeLeft = moment.duration(startTime-now);
-    return moment.duration(timeLeft, 'minutes').format();
+    return moment.duration(startTime-now);
+    // return moment.duration(timeLeft, 'minutes').format();
   }
 }
 
@@ -76,18 +76,51 @@ export class TickEmitter extends EventEmitter {
 export default class Countdown extends TimerComponent {
 
   render() {
+    const countdown = [{value: this.state.leftTime.days(), label: 'DAYS'},
+                       {value: this.state.leftTime.hours(), label: 'HRS'},
+                       {value: this.state.leftTime.minutes(), label: 'MINS'},
+                       {value: this.state.leftTime.seconds(), label: 'SECS'}];
     return (
-      <View>
-        <Text>
-          {this.state.leftTime}</Text>
-        </View>
+      <View style={styles.container}>
+
+        {_.map(countdown, (timeUnit, index) => (
+          <View key={index} style={styles.timeUnit}>
+            <Text style={styles.timeUnitText}>
+              {timeUnit.value}
+            </Text>
+            <View style={styles.timeUnitLabel}>
+              <Text style={styles.timeUnitLabelText}>{timeUnit.label}</Text>
+            </View>
+          </View>))
+          }
+      </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5FCFF',
+  container: {flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingLeft: 50,
+    paddingRight: 30
   },
+  timeUnit: {
+    width: 60,
+    height: 50
+  },
+  timeUnitText: {
+    fontSize: 40,
+    color: '#52489c',
+  },
+  timeUnitLabel: {
+    position: 'absolute',
+    top: -7,
+    left: -3
+  },
+  timeUnitLabelText: {
+    fontSize: 10,
+    color: '#52489c',
+  }
 });
