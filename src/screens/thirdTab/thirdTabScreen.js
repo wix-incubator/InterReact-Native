@@ -5,13 +5,22 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  Animated
 } from 'react-native';
 import {mapStateToProps} from '../../store';
 import {connect} from 'react-redux';
+import * as Animatable from 'react-native-animatable';
 
 class ThirdTabScreen extends Component {
-  
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      fadeAnim: new Animated.Value(1)
+    }
+  }
+
   renderQuestion(question) {
     return (
       <View style={styles.question}>
@@ -29,34 +38,31 @@ class ThirdTabScreen extends Component {
   }
 
   answerPressed(i) {
-    if (this.getQuestionToShow().correctAnswerIndex === i) {
-      console.log('iiiiiiii', 'good');
-    }
-    else {
-      console.log('iiiiiiii', 'bad');
-    }
+    const answerRef = 'answer'+i;
+    //console.error(this.refs.answer1)
+    this.refs.container.zoomOut(500);
 
   }
 
   renderAnswer(answer, i) {
+    const answerRef = 'answer'+i;
     return (
-      <View key={i} style={styles.answer}>
-        <TouchableOpacity style={styles.answer} onPress={() => this.answerPressed(i)}>
-          <Text style={styles.text}>
-            {answer}
-          </Text>
+        <TouchableOpacity key={i} style={styles.answer} onPress={() => this.answerPressed(i)}>
+
+            <Text style={styles.text}>
+              {answer}
+            </Text>
         </TouchableOpacity>
-      </View>
     )
   }
 
   render() {
     const questionToShow = this.getQuestionToShow();
     return (
-      <View style={styles.container}>
+      <Animatable.View style={styles.container} ref='container'>
         {this.renderQuestion(questionToShow)}
         {questionToShow.answers.map((answer, i) => this.renderAnswer(answer, i))}
-      </View>
+      </Animatable.View>
     );
   }
 }
@@ -67,6 +73,7 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     justifyContent: 'center',
     backgroundColor: '#F5FCFF',
+
   },
   question: {
     flex: 2,
@@ -79,7 +86,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     backgroundColor: '#59C3C3',
-    marginTop: 1
+    marginTop: 1,
+
   },
   text: {
     alignSelf: 'center',
