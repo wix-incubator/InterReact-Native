@@ -8,6 +8,8 @@
   "dependencies": {
     "react": "15.1.0",
     "react-native": "^0.28.0",
-    "react-native-navigation": "^1.0.15"
+    "react-native-navigation": "^1.0.15",
+    "redux-logger": "^2.6.1",
+    "redux-promise-middleware": "^3.0.2"
   }
 }
