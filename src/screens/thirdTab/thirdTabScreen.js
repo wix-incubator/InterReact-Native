@@ -23,8 +23,9 @@ class ThirdTabScreen extends Component {
   static navigatorButtons = {
     rightButtons: [
       {
-        title: 'do', // for a textual button, provide the button title (label)
+        title: '', // for a textual button, provide the button title (label)
         id: 'do', // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
+        disableIconTint: true
         }
       ]
   };
