@@ -1,8 +1,8 @@
 import * as actions from '../constants/actions';
 
 const defaultState = {
-  title: 'React Native Hackathon',
-  description: 'Come hack!!!!!!!!!!',
+  title: 'React It!',
+  description: 'Lets talk react native',
   city: 'Tel Aviv',
   date: 'June 23'
 };
