@@ -9,7 +9,7 @@ const Overview = ({attendees}) =>
   <View style={styles.container}>
     <Text style={{fontSize: 28, color: '#52489c', fontWeight: '500'}}>{attendees.attendeesData.length} GUESTS ATTENDING</Text>
     <View style={{marginTop: 10}}>
-      <ScrollView>
+      <ScrollView contentInset={{top: 0, left: 0, bottom: 300, right: 0}} showsVerticalScrollIndicator={false}>
         <Text>Company</Text>
         <BarChart groupFn={() => group(attendees.attendeesData, 'org')} />
         <Text>Experience</Text>
