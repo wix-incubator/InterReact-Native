@@ -16,8 +16,10 @@ const {height, width} = Dimensions.get('window');
 class SecondTabScreen extends Component {
 
   static navigatorStyle = {
-  navBarNoBorder: true
-}
+    navBarNoBorder: true,
+    navBarBackgroundColor: 'red'
+  };
+
   constructor(props) {
     super(props);
     this.state = {displayedSegmentIndex: 0};
@@ -58,9 +60,9 @@ class SecondTabScreen extends Component {
             }}
           />
         </View>
-       { this.state.displayedSegmentIndex === 0 ?
-          <Attendees attendees={attendees} />
-        : <Overview attendees={attendees} />
+        { this.state.displayedSegmentIndex === 0 ?
+          <Attendees attendees={attendees}/>
+          : <Overview attendees={attendees}/>
         }
       </View>
     );

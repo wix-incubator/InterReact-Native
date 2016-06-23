@@ -1,5 +1,5 @@
-import { Navigation } from 'react-native-navigation';
-import { registerScreens } from './src/screens';
+import {Navigation} from 'react-native-navigation';
+import {registerScreens} from './src/screens';
 import firebaseService from './src/services/firebase';
 import {store} from './src/store';
 import * as actions from './src/store/constants/actions';
@@ -24,18 +24,27 @@ firebaseService.readConf().then(data => {
       {
         label: 'Details',
         screen: 'example.FirstTabScreen', // this is a registered name for a screen
-        title: 'Details'
+        title: 'Details',
+        icon: require('./src/images/details.png'),
       },
       {
-        label: 'Attendees',
+        label: 'Guests',
         screen: 'example.SecondTabScreen', // this is a registered name for a screen
-        title: 'Attendees'
+        title: 'Guests',
+        icon: require('./src/images/guests.png'),
       },
       {
         label: 'Live',
         screen: 'example.ThirdTabScreen', // this is a registered name for a screen
-        title: 'Live'
-      }
-    ]
-  });
+        title: 'Live',
+        icon: require('./src/images/live.png'),
+      },
+    ],
+    tabsStyle: {
+      tabBarSelectedButtonColor: 'green'
+    },
+    navigatorStyle: {
+      navBarBackgroundColor: 'red'
+    }
+  })
 });

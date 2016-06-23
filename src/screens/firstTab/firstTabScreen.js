@@ -20,6 +20,10 @@ const {width} = Dimensions.get('window');
 
 class FirstTabScreen extends Component {
 
+  static navigatorStyle = {
+    navBarBackgroundColor: 'red'
+  };
+
   constructor(props) {
     super(props);
     this.ticker = new TickEmitter('eventTicker');

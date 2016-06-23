@@ -6,19 +6,54 @@ import {
   Text,
   View,
   TouchableOpacity,
-  Animated
+  Animated,
+  AlertIOS
 } from 'react-native';
 import {mapStateToProps} from '../../store';
 import {connect} from 'react-redux';
 import * as Animatable from 'react-native-animatable';
 
+const EMPTY_SCREEN = 'emptyScreen';
+const QUESTION_SCREEN = 'questionScreen';
+const RESULTS_SCREEN = 'resultsScreen';
+
 class ThirdTabScreen extends Component {
+
+  static navigatorButtons = {
+    rightButtons: [
+      {
+        title: 'DO', // for a textual button, provide the button title (label)
+        id: 'do', // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
+      },
+    ]
+  };
+  static navigatorStyle = {
+    navBarBackgroundColor: 'red'
+  };
 
   constructor(props) {
     super(props);
+    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     this.state = {
-      fadeAnim: new Animated.Value(1)
+      fadeAnim: new Animated.Value(1),
+      screenState: EMPTY_SCREEN
     }
+  }
+
+  onNavigatorEvent(event) {
+    if (event.type == 'NavBarButtonPress') {
+      if (event.id == 'do') {
+        this.setState({screenState: QUESTION_SCREEN});
+      }
+    }
+  }
+
+  renderEmptyState() {
+    return (
+      <Animatable.View style={styles.container} ref='container'>
+        <Text style={{fontSize:30}}>Are Your Ready ?!</Text>
+      </Animatable.View>
+    )
   }
 
   renderQuestion(question) {
@@ -38,32 +73,58 @@ class ThirdTabScreen extends Component {
   }
 
   answerPressed(i) {
-    const answerRef = 'answer'+i;
+    const answerRef = 'answer' + i;
     //console.error(this.refs.answer1)
-    this.refs.container.zoomOut(500);
+    this.setState({screenState: RESULTS_SCREEN});
 
   }
 
   renderAnswer(answer, i) {
-    const answerRef = 'answer'+i;
+    const answerRef = 'answer' + i;
     return (
-        <TouchableOpacity key={i} style={styles.answer} onPress={() => this.answerPressed(i)}>
+      <TouchableOpacity key={i} style={styles.answer} onPress={() => this.answerPressed(i)}>
+        <Text style={styles.text}>
+          {answer}
+        </Text>
+      </TouchableOpacity>
+    )
+  }
+  renderQuestionScreen() {
+    return (
+      <Animatable.View style={styles.container} ref='questions' >
+        {this.renderQuestion(this.getQuestionToShow())}
+        {this.getQuestionToShow().answers.map((answer, i) => this.renderAnswer(answer, i))}
+      </Animatable.View>
+    )
+  }
 
-            <Text style={styles.text}>
-              {answer}
-            </Text>
-        </TouchableOpacity>
+  renderResultsScreen() {
+    return (
+      <Animatable.View style={styles.container} ref='results' >
+        <Text style={styles.text}>
+         kkkk
+        </Text>
+      </Animatable.View>
     )
   }
 
   render() {
-    const questionToShow = this.getQuestionToShow();
-    return (
-      <Animatable.View style={styles.container} ref='container'>
-        {this.renderQuestion(questionToShow)}
-        {questionToShow.answers.map((answer, i) => this.renderAnswer(answer, i))}
-      </Animatable.View>
-    );
+    if (this.state.screenState === EMPTY_SCREEN) {
+      return (
+        this.renderEmptyState()
+      )
+    }
+    if (this.state.screenState === QUESTION_SCREEN) {
+      return (
+        this.renderQuestionScreen()
+      )
+    }
+    if (this.state.screenState === RESULTS_SCREEN) {
+      return (
+        this.renderResultsScreen()
+      )
+    }
+
   }
 }
 
