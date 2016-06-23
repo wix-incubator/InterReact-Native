@@ -20,11 +20,11 @@ class FirstTabScreen extends Component {
   constructor(props){
     super(props);
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
-    this.guest = {};
-  }
-
-  componentDidMount() {
-    this.props.dispatch({type: actions.ATTENDEES_SEND_RSVP, data: {name: 'Hi', org: 'Google'}});
+    this.guest = {
+      name: '',
+      company: '',
+      experience: ''
+    };
   }
 
   onNavigatorEvent(event) {
@@ -35,6 +35,13 @@ class FirstTabScreen extends Component {
         });
       }
     }
+  }
+
+  submitRSVP() {
+    this.props.dispatch({type: actions.ATTENDEES_SEND_RSVP, data: this.guest});
+    Navigation.dismissModal({
+      animationType: 'slide-down'
+    });
   }
 
   render() {
@@ -51,14 +58,14 @@ class FirstTabScreen extends Component {
           <View key={index}>
             <View style={{marginBottom: 30}}>
               <Text style={{color: '#ffffff'}}>{field.label}</Text>
-              <TextInput style={styles.input} style={styles.input} />
+              <TextInput style={styles.input} style={styles.input} onChange={(event) => this.guest[field.input] = event.nativeEvent.text}/>
             </View>
           </View>
         ))
           }
 
           <View style={{flex: 1, justifyContent: 'flex-end'}}>
-            <TouchableOpacity style={styles.submitButton} onPress={this.rsvp}>
+            <TouchableOpacity style={styles.submitButton} onPress={() => this.submitRSVP()}>
               <Text style={styles.submitButtonText}>SUBMIT</Text>
             </TouchableOpacity>
           </View>
