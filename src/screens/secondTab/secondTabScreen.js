@@ -1,25 +1,42 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  ListView
 } from 'react-native';
 
+const atttendeesData = ['Arron Greenwald', 'Ethan Sharabi', 'Ran Greenbaerg', 'Dan Abramov']
+
+const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
 export default class SecondTabScreen extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      dataSource: ds.cloneWithRows(atttendeesData)
+    }
+  }
+
+  renderRow(rowData) {
+    return (
+      <View style={styles.row}>
+        <Text>{rowData}</Text>
+      </View>
+    )
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <View style={styles.listView}>
+          <ListView
+            dataSource={this.state.dataSource}
+            renderRow={(rowData) => this.renderRow(rowData)}
+          />
+        </View>
       </View>
     );
   }
@@ -28,18 +45,13 @@ export default class SecondTabScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#F5FCFF'
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  listView: {
+
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  row: {
+    backgroundColor: 'green'
+
+  }
 });
