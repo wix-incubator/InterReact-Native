@@ -15,6 +15,9 @@ import Overview from './overview';
 const {height, width} = Dimensions.get('window');
 class SecondTabScreen extends Component {
 
+  static navigatorStyle = {
+  navBarNoBorder: true
+}
   constructor(props) {
     super(props);
     this.state = {displayedSegmentIndex: 0};
@@ -67,13 +70,13 @@ class SecondTabScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#59C3C3',
   },
   segmented: {
     height: 50,
     width: width,
     backgroundColor: 'white',
-    marginVertical: 8
+    //marginVertical: 8
   }
 });
 

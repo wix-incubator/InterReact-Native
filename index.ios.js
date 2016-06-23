@@ -15,17 +15,17 @@ Navigation.startTabBasedApp({
     {
       label: 'Details',
       screen: 'example.FirstTabScreen', // this is a registered name for a screen
-      title: 'Screen One'
+      title: 'Details'
     },
     {
       label: 'Attendees',
       screen: 'example.SecondTabScreen', // this is a registered name for a screen
-      title: 'Screen Two'
+      title: 'Attendees'
     },
     {
-      label: 'Third',
+      label: 'Live',
       screen: 'example.ThirdTabScreen', // this is a registered name for a screen
-      title: 'Screen Three'
+      title: 'Live'
     }
   ]
 });
