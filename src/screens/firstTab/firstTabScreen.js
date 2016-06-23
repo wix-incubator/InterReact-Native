@@ -10,11 +10,11 @@ import {connect} from 'react-redux';
 
 class FirstTabScreen extends Component {
   render() {
-    const {details} = this.props;
+    const {details, attendees} = this.props;
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          {details}
+          {attendees.attendeesData[0]}
         </Text>
       </View>
     );
