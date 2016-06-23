@@ -15,9 +15,10 @@ class Org extends Component {
     setTimeout(() =>
         Animated.spring(this.state.barWidth, {
           toValue: (width - 100) * (this.props.length/this.props.maxLength),
-          friction: 5
+          friction: 5,
+          tension: 1
         }).start(),
-      500);
+      100);
   }
 
   render() {
@@ -25,7 +26,10 @@ class Org extends Component {
     return (
       <View style={{flexDirection: 'row', padding: 5}}>
         <Animated.View style={[styles.orgLength, {width: this.state.barWidth}]}>
-          <Text style={styles.orgName}>{name}</Text>
+          <View style={{position: 'absolute', top: 3, left: 3}}>
+            <Text style={styles.orgName}>{name}</Text>
+          </View>
+
         </Animated.View>
         <View style={styles.orgLabel}>
           <Text style={{textAlign: 'right', fontSize: 18,}}>{length}</Text>
@@ -57,7 +61,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ebebeb'
   },
   orgLength: {
-    backgroundColor: '#59C3C3',
+    backgroundColor: '#84A98C',
     padding: 5,
     height: 40,
     marginBottom: 10,
