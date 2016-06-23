@@ -7,12 +7,12 @@ registerScreens(); // this is where you register all of your app's screens
 Navigation.startTabBasedApp({
   tabs: [
     {
-      label: 'First',
+      label: 'Details',
       screen: 'example.FirstTabScreen', // this is a registered name for a screen
       title: 'Screen One'
     },
     {
-      label: 'Second',
+      label: 'Attendees',
       screen: 'example.SecondTabScreen', // this is a registered name for a screen
       title: 'Screen Two'
     },
