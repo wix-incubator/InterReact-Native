@@ -31,12 +31,7 @@ class SecondTabScreen extends Component {
       <View style={styles.container}>
         <View style={{}}>
           <CustomSegmentedControl
-            style={{
-            height: 50,
-            width: width,
-        backgroundColor: 'white',
-        marginVertical: 8
-    }}
+            style={styles.segmented}
             textValues={['GUESTS','OVERVIEW' ]}
             selected={0}
             segmentedStyle={{
@@ -88,7 +83,12 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     padding: 4,
     margin: 4
-
+  },
+  segmented: {
+    height: 50,
+    width: width,
+    backgroundColor: 'white',
+    marginVertical: 8
   }
 });
 

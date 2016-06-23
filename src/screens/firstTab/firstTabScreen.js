@@ -9,15 +9,20 @@ import {
 import {mapStateToProps} from '../../store';
 import {connect} from 'react-redux';
 import {Navigation} from 'react-native-navigation';
+import Countdown, {TickEmitter} from './Countdown';
 
 class FirstTabScreen extends Component {
 
-  rsvp(){
+  constructor(props) {
+    super(props);
+    this.ticker = new TickEmitter('eventTicker');
+  }
+
+  rsvp() {
     Navigation.showModal({
       screen: 'details.RSVPScreen',
       title: 'RSVP',
-      navigatorStyle: {
-      },
+      navigatorStyle: {},
       navigatorButtons: {
         leftButtons: [{
           title: 'Cancel',
@@ -27,11 +32,20 @@ class FirstTabScreen extends Component {
     });
   }
 
+  componentDidMount() {
+    this.ticker.startInterval();
+  }
+
+  componentWillUnmount() {
+    this.ticker.stopInterval();
+
+  }
   render() {
     const {details, attendees} = this.props;
     const {title, description, date, city, coordinates} = details;
     return (
       <View style={styles.container}>
+        <Countdown ticker={this.ticker} startTime={1466874046036}/>
         <Text style={styles.welcome}>
           {title}
         </Text>
@@ -49,6 +63,8 @@ class FirstTabScreen extends Component {
     );
   }
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
