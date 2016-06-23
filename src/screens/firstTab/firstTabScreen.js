@@ -27,7 +27,6 @@ class FirstTabScreen extends Component {
     //firebaseService.readConf().then(data => this.props.dispatch({type: actions.UPDATE_STATE, data}));
     firebaseService.listenToConfChanges(data => {
       if (data) {
-        //console.warn('listen', data)
         this.props.dispatch({type: actions.UPDATE_STATE, data});
       }
     })
