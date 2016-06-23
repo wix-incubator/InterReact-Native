@@ -8,7 +8,7 @@ const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 const renderRow = data => <Attendee {...data} />;
 
 const Attendees = ({attendees}) =>
-  <View style={styles.listView}>
+  <View style={styles.container}>
     <ListView
       dataSource={ds.cloneWithRows(attendees.attendeesData)}
       renderRow={renderRow}
@@ -18,7 +18,9 @@ const Attendees = ({attendees}) =>
 export default Attendees;
 
 const styles = StyleSheet.create({
-  listView: {
-    flex: 1
+  container: {
+    flex: 1,
+    padding: 10,
+    backgroundColor: '#ebebeb'
   }
 });

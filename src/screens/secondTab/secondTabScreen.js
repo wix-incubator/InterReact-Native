@@ -36,14 +36,14 @@ class SecondTabScreen extends Component {
               selectedLineHeight: 2,
               fontSize:17,
               fontWeight: 'bold', // bold, italic, regular (default)
-              segmentBackgroundColor: 'transparent',
-              segmentTextColor: '#7a92a5',
+              segmentBackgroundColor: '#52489C',
+              segmentTextColor: '#000000',
               segmentHighlightTextColor: '#7a92a599',
-              selectedLineColor: '#00adf5',
-              selectedLineAlign: 'bottom', // top/bottom/text
-              selectedLineMode: 'text', // full/text
-              selectedTextColor: 'black',
-              selectedLinePaddingWidth: 30,
+              selectedLineColor: '#ebebeb',
+              selectedLineAlign: 'text', // top/bottom/text
+              selectedLineMode: 'full', // full/text
+              selectedTextColor: '#ebebeb',
+              selectedLinePaddingWidth: 12,
               segmentFontFamily: 'system-font-bold'
             }}
             animation={{
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   segmented: {
     height: 50,
     width: width,
-    backgroundColor: 'white',
+    backgroundColor: '#cad2c5'
     //marginVertical: 8
   }
 });

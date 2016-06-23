@@ -5,9 +5,12 @@ const {height, width} = Dimensions.get('window');
 
 
 const Overview = ({attendees}) =>
-  <View>
-    <Text>{attendees.attendeesData.length} Guests</Text>
-    <ByOrg attendees={attendees.attendeesData} />
+  <View style={styles.container}>
+    <Text style={{fontSize: 28, color: '#52489c', fontWeight: '500'}}>{attendees.attendeesData.length} GUESTS ATTENDING</Text>
+    <View style={{marginTop: 10}}>
+      <ByOrg attendees={attendees.attendeesData} />
+    </View>
+
   </View>
 ;
 
@@ -37,10 +40,12 @@ class Org extends Component {
     const {name, length} = this.props;
     return (
       <View style={{flexDirection: 'row', padding: 5}}>
-
-        <Animated.View style={[styles.orgLength, {width: this.state.barWidth}]}><Text style={styles.orgName}>{name}</Text></Animated.View>
-        <View style={styles.orgLabel}><Text style={{textAlign: 'right'}}>{length}</Text></View>
-
+        <Animated.View style={[styles.orgLength, {width: this.state.barWidth}]}>
+          <Text style={styles.orgName}>{name}</Text>
+        </Animated.View>
+        <View style={styles.orgLabel}>
+          <Text style={{textAlign: 'right', fontSize: 18,}}>{length}</Text>
+        </View>
       </View>
     );
   }
@@ -53,7 +58,6 @@ function ByOrg({attendees}) {
   const maxLength = grouped[sorted[0]].length;
   return (
     <View>
-      <Text>Organizations Represented</Text>
       {
         sorted.map(org => <Org key={org} name={org} length={grouped[org].length} maxLength={maxLength} />)
       }
@@ -65,13 +69,25 @@ function ByOrg({attendees}) {
 export default Overview;
 
 const styles = StyleSheet.create({
-  orgLength: {backgroundColor: 'blue', height: 30, margin: 10},
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: '#ebebeb'
+  },
+  orgLength: {
+    backgroundColor: '#59C3C3',
+    padding: 5,
+    height: 40,
+    marginBottom: 10,
+    marginTop: 10,
+    borderRadius: 1,
+  },
   orgLabel: {
-    alignSelf: 'flex-end',
-    justifyContent: 'flex-end',
+    alignSelf: 'center',
     flex: 1
   },
   orgName: {
+    fontSize: 18,
     color: '#fff'
   },
   row: {
