@@ -25,12 +25,12 @@ class Org extends Component {
     const {name, length} = this.props;
     return (
       <View style={{flexDirection: 'row', padding: 5}}>
-        <Animated.View style={[styles.orgLength, {width: this.state.barWidth}]}>
-          <View style={{position: 'absolute', top: 3, left: 3}}>
-            <Text style={styles.orgName}>{name}</Text>
-          </View>
 
+        <Animated.View style={[styles.orgLength, {width: this.state.barWidth}]}>
         </Animated.View>
+        <View style={{position: 'absolute', top: 18, left: 10, backgroundColor: 'transparent'}}>
+          <Text style={[styles.orgName, {backgroundColor: 'transparent'}]}>{name}</Text>
+        </View>
         <View style={styles.orgLabel}>
           <Text style={{textAlign: 'right', fontSize: 18,}}>{length}</Text>
         </View>
