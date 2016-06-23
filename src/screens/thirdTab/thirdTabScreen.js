@@ -12,6 +12,7 @@ import {
 import {mapStateToProps} from '../../store';
 import {connect} from 'react-redux';
 import * as Animatable from 'react-native-animatable';
+import BarChart from '../secondTab/BarChart';
 
 const EMPTY_SCREEN = 'emptyScreen';
 const QUESTION_SCREEN = 'questionScreen';
@@ -71,6 +72,10 @@ class ThirdTabScreen extends Component {
 
   }
 
+  getAnswer(i) {
+    return {name: this.getQuestionToShow().answers[i]};
+  }
+
   renderAnswer(answer, i) {
     const answerRef = 'answer' + i;
     return (
@@ -93,9 +98,10 @@ class ThirdTabScreen extends Component {
   renderResultsScreen() {
     return (
       <Animatable.View style={styles.container} ref='results' >
-        <Text style={styles.text}>
-         kkkk
-        </Text>
+        <BarChart groupFn={() => {
+        console.log(_.groupBy(this.getQuestionToShow().results.map(i => this.getAnswer(i), 'name')))
+        return _.groupBy(this.getQuestionToShow().results.map(i => this.getAnswer(i), 'name'))}
+        } />
       </Animatable.View>
     )
   }

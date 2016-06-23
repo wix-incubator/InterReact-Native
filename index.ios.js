@@ -5,7 +5,7 @@ import {store} from './src/store';
 import * as actions from './src/store/constants/actions';
 
 // connecting fitrebae
-const confId = '4255ec05-da65-b654-8c2d-bb7f71221c32';
+const confId = 'guid';
 firebaseService.connect(confId);
 
 firebaseService.listenToConfChanges(data => {
