@@ -28,11 +28,11 @@ class Org extends Component {
 
         <Animated.View style={[styles.orgLength, {width: this.state.barWidth}]}>
         </Animated.View>
-        <View style={{position: 'absolute', top: 18, left: 10, backgroundColor: 'transparent'}}>
-          <Text style={[styles.orgName, {backgroundColor: 'transparent'}]}>{name}</Text>
-        </View>
         <View style={styles.orgLabel}>
           <Text style={{textAlign: 'right', fontSize: 18,}}>{length}</Text>
+        </View>
+        <View style={{position: 'absolute', top: 18, left: 10, backgroundColor: 'transparent'}}>
+          <Text style={[styles.orgName]}>{name}</Text>
         </View>
       </View>
     );

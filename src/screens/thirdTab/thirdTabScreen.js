@@ -107,7 +107,7 @@ class ThirdTabScreen extends Component {
 
   renderResultsScreen() {
     return (
-      <Animatable.View style={styles.container} ref='results' >
+      <Animatable.View style={[styles.container, {padding: 20}]} ref='results' >
         <BarChart groupFn={() => {
           const grouped = _.groupBy(this.getQuestionToShow().results);
           const result = {};
