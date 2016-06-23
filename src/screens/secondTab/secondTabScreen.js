@@ -4,40 +4,74 @@ import {
   StyleSheet,
   Text,
   View,
-  ListView
+  ListView,
+  Dimensions
 } from 'react-native';
 import {mapStateToProps} from '../../store';
 import {connect} from 'react-redux';
+import {CustomSegmentedControl} from 'react-native-custom-segmented-control'
 
-const atttendeesData = ['Arron Greenwald', 'Ethan Sharabi', 'Ran Greenbaerg', 'Dan Abramov'];
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-
+var {height, width} = Dimensions.get('window');
 class SecondTabScreen extends Component {
   
-  constructor(props) {
-    super(props);
-    this.state = {
-      dataSource: ds.cloneWithRows(atttendeesData)
-    }
-  }
-
   renderRow(rowData) {
+    const {name, org} = rowData;
     return (
       <View style={styles.row}>
-        <Text>{rowData}</Text>
+        <Text>{name}</Text>
+        <Text>{org}</Text>
       </View>
     )
   }
 
   render() {
+    const {details, attendees} = this.props;
     return (
       <View style={styles.container}>
+        <View style={{}}>
+          <CustomSegmentedControl
+            style={{
+            height: 50,
+            width: width,
+        backgroundColor: 'white',
+        marginVertical: 8
+    }}
+            textValues={['GUESTS','OVERVIEW' ]}
+            selected={0}
+            segmentedStyle={{
+        selectedLineHeight: 2,
+        fontSize:17,
+        fontWeight: 'bold', // bold, italic, regular (default)
+        segmentBackgroundColor: 'transparent',
+        segmentTextColor: '#7a92a5',
+        segmentHighlightTextColor: '#7a92a599',
+        selectedLineColor: '#00adf5',
+        selectedLineAlign: 'bottom', // top/bottom/text
+        selectedLineMode: 'text', // full/text
+        selectedTextColor: 'black',
+        selectedLinePaddingWidth: 30,
+        segmentFontFamily: 'system-font-bold'
+    }}
+            animation={{
+        duration: 0.6,
+        damping: 0.5,
+        initialDampingVelocity: 0.4,
+
+    }}
+            onSelectedWillChange={(event)=> {
+    }}
+            onSelectedDidChange={(event)=> {
+    }}
+          />
+        </View>
         <View style={styles.listView}>
           <ListView
-            dataSource={this.state.dataSource}
+            dataSource={ds.cloneWithRows(attendees.attendeesData)}
             renderRow={(rowData) => this.renderRow(rowData)}
           />
         </View>
+
       </View>
     );
   }
@@ -46,13 +80,14 @@ class SecondTabScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5FCFF'
+    backgroundColor: '#F5FCFF',
   },
-  listView: {
-
-  },
+  listView: {},
   row: {
-    backgroundColor: 'green'
+    backgroundColor: 'green',
+    flexDirection: 'column',
+    padding: 4,
+    margin: 4
 
   }
 });
