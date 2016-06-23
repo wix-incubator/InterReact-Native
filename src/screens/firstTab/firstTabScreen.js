@@ -18,15 +18,14 @@ class FirstTabScreen extends Component {
   constructor(props) {
     super(props);
     this.ticker = new TickEmitter('eventTicker');
-    constructor(props) {
-      super(props);
-      //firebaseService.readConf().then(data => this.props.dispatch({type: actions.UPDATE_STATE, data}));
-      firebaseService.listenToConfChanges(data => {
-        if (data) {
-          //console.warn('listen', data)
-          this.props.dispatch({type: actions.UPDATE_STATE, data});
-        }
-      })
+
+    //firebaseService.readConf().then(data => this.props.dispatch({type: actions.UPDATE_STATE, data}));
+    firebaseService.listenToConfChanges(data => {
+      if (data) {
+        //console.warn('listen', data)
+        this.props.dispatch({type: actions.UPDATE_STATE, data});
+      }
+    })
   }
 
   rsvp(){
