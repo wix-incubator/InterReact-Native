@@ -83,7 +83,7 @@ class ThirdTabScreen extends Component {
   }
 
   getAnswer(i) {
-    return {name: this.getQuestionToShow().answers[i]};
+    return this.getQuestionToShow().answers[i];
   }
 
   renderAnswer(answer, i) {
@@ -109,8 +109,11 @@ class ThirdTabScreen extends Component {
     return (
       <Animatable.View style={styles.container} ref='results' >
         <BarChart groupFn={() => {
-        console.log(_.groupBy(this.getQuestionToShow().results.map(i => this.getAnswer(i), 'name')))
-        return _.groupBy(this.getQuestionToShow().results.map(i => this.getAnswer(i), 'name'))}
+          const grouped = _.groupBy(this.getQuestionToShow().results);
+          const result = {};
+          Object.keys(grouped).map(i => result[this.getAnswer(i)] = grouped[i]);
+          return result
+         }
         } />
       </Animatable.View>
     )
