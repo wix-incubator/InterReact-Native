@@ -15,7 +15,6 @@ firebaseService.listenToConfChanges(data => {
 });
 
 firebaseService.readConf().then(data => {
-  console.warn(data.attendees)
   store.dispatch({type: actions.UPDATE_STATE, data});
 
   registerScreens(); // this is where you register all of your app's screens
