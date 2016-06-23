@@ -4,38 +4,81 @@
       "attendees" : {
         "attendeesData" : [ {
           "name" : "Aaron Greenwald",
-          "org" : "Wix"
-        }, {
-          "name" : "Ethan Sharabi",
-          "org" : "Wix"
-        }, {
-          "name" : "Ran Greenbaerg",
-          "org" : "Wix"
-        }, {
-          "name" : "Dan Abramov",
-          "org" : "Facebook"
-        } ]
-      },
-      "details" : {
-        "city" : "Tel Aviv",
-        "date" : "June 23",
-        "description" : "Lets talk react native",
-        "title" : "React It!"
-      },
-      "questions" : {
-        "questionsData" : [ {
-          "answers" : [ "beginner", "mid", "advanced", "pro" ],
-          "question" : "What's your programming level?"
-        }, {
-          "active" : "true",
-          "answers" : [ "NavigatorIOS", "NavigatorExperimental", "React Native Navigation", "Other/None" ],
-          "correctAnswerIndex" : 3,
-          "question" : "What do you use to navigate in RN?",
-          "results": [
-            0, 0, 1, 1, 1, 1, 1, 2, 3
-          ]
-        } ]
-      }
-    }
-  }
-}
+          "org" : "Wix",
+          "experience": "Expert"
+          }, {
+            "name" : "Ethan Sharabi",
+            "org" : "Wix",
+            "experience": "Expert"
+            }, {
+              "name" : "Ran Greenbaerg",
+              "org" : "Wix",
+              "experience": "Expert"
+              }, {
+                "name" : "Dan Abramov",
+                "org" : "Facebook",
+                "experience": "Advanced"
+              },
+              {
+                "name" : "Mark Zuckerberg",
+                "org" : "Facebook",
+                "experience": "Beginner"
+                }, {
+                  "name": "Sundar Pichai",
+                  "org": "Google",
+                  "experience": "Beginner"
+                },
+                {
+                  "name": "Harry Potter",
+                  "org": "Hogwarts",
+                  "experience": "Wizard"
+                },
+                {
+                  "name": "Ron Weasley",
+                  "org": "Hogwarts",
+                  "experience": "Wizard"
+                },
+                {
+                  "name": "Hermione Granger",
+                  "org": "Hogwarts",
+                  "experience": "Wizard"
+                  },
+                  {
+                    "name": "Noah Obriger",
+                    "org": "Microsoft",
+                    "experience": "Advanced"
+                    },
+                  {
+                    "name": "Dani Grov",
+                    "org": "Microsoft",
+                    "experience": "Beginner"
+                    },
+                    {
+                      "name": "Brad Walsh",
+                      "org": "Microsoft",
+                      "experience": "Expert"
+                      } ]
+                },
+                "details" : {
+                  "city" : "Tel Aviv",
+                  "date" : "JULY &",
+                  "description" : "Lets talk react native",
+                  "title" : "React It!"
+                },
+                "questions" : {
+                  "questionsData" : [ {
+                    "answers" : [ "beginner", "mid", "advanced", "pro" ],
+                    "question" : "What's your programming level?"
+                    }, {
+                      "active" : "true",
+                      "answers" : [ "NavigatorIOS", "NavigatorExperimental", "React Native Navigation", "Other/None" ],
+                      "correctAnswerIndex" : 3,
+                      "question" : "What do you use to navigate in RN?",
+                      "results": [
+                        0, 0, 1, 1, 1, 1, 1, 2, 3
+                      ]
+                      } ]
+                    }
+                  }
+                }
+              }
