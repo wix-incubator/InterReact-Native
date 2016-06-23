@@ -13,7 +13,7 @@ import * as actions from '../../store/constants/actions';
 import {connect} from 'react-redux';
 import {Navigation} from 'react-native-navigation';
 
-const form = [{label: 'NAME', input: 'name'}, {label: 'COMPANY', input: 'company'}, {label: 'EXPERIENCE', input: 'experience'}]
+const form = [{label: 'NAME', input: 'name'}, {label: 'COMPANY', input: 'org'}, {label: 'EXPERIENCE', input: 'experience'}]
 
 class FirstTabScreen extends Component {
 
@@ -38,6 +38,7 @@ class FirstTabScreen extends Component {
   }
 
   submitRSVP() {
+    //console.error(this.guest)
     this.props.dispatch({type: actions.ATTENDEES_SEND_RSVP, data: this.guest});
     Navigation.dismissModal({
       animationType: 'slide-down'

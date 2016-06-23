@@ -5,7 +5,7 @@ import firebaseMiddleware from './firebaseMiddleware';
 import promiseMiddleware from 'redux-promise-middleware';
 
 const middlewares = [
-  // createLogger(),
+  createLogger(),
   firebaseMiddleware,
   promiseMiddleware()
 ];

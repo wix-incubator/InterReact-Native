@@ -13,6 +13,7 @@ export default reduceReducers(
     questions
   }),
   (state, action) => {
+    console.log('here', action)
     switch (action.type) {
       case actions.UPDATE_STATE:
         return action.data;

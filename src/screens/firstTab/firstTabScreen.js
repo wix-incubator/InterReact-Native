@@ -13,24 +13,16 @@ import {mapStateToProps} from '../../store';
 import {connect} from 'react-redux';
 import * as actions from '../../store/constants/actions';
 import {Navigation} from 'react-native-navigation';
-import firebaseService from '../../services/firebase';
 import Countdown, {TickEmitter} from './Countdown';
 
 const locationSrc = require('../../images/location.png');
-const {height, width} = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 
 class FirstTabScreen extends Component {
 
   constructor(props) {
     super(props);
     this.ticker = new TickEmitter('eventTicker');
-
-    //firebaseService.readConf().then(data => this.props.dispatch({type: actions.UPDATE_STATE, data}));
-    firebaseService.listenToConfChanges(data => {
-      if (data) {
-        this.props.dispatch({type: actions.UPDATE_STATE, data});
-      }
-    })
   }
 
   rsvp(){
