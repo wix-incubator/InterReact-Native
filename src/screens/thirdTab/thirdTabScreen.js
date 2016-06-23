@@ -19,16 +19,8 @@ const RESULTS_SCREEN = 'resultsScreen';
 
 class ThirdTabScreen extends Component {
 
-  static navigatorButtons = {
-    rightButtons: [
-      {
-        title: 'DO', // for a textual button, provide the button title (label)
-        id: 'do', // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
-      },
-    ]
-  };
   static navigatorStyle = {
-    navBarBackgroundColor: 'red'
+    navBarBackgroundColor: '#ebebeb'
   };
 
   constructor(props) {
@@ -50,8 +42,8 @@ class ThirdTabScreen extends Component {
 
   renderEmptyState() {
     return (
-      <Animatable.View style={styles.container} ref='container'>
-        <Text style={{fontSize:30}}>Are Your Ready ?!</Text>
+      <Animatable.View style={[styles.container, {justifyContent: 'center', alignItems: 'center'}]} ref='container'>
+        <Text style={{fontSize:42, color: '#ebebeb', textAlign: 'center', padding: 20}}>ARE YOU READY?!</Text>
       </Animatable.View>
     )
   }
@@ -59,7 +51,7 @@ class ThirdTabScreen extends Component {
   renderQuestion(question) {
     return (
       <View style={styles.question}>
-        <Text style={styles.text}>
+        <Text style={styles.questionText}>
           {question.question}
         </Text>
       </View>
@@ -83,7 +75,7 @@ class ThirdTabScreen extends Component {
     const answerRef = 'answer' + i;
     return (
       <TouchableOpacity key={i} style={styles.answer} onPress={() => this.answerPressed(i)}>
-        <Text style={styles.text}>
+        <Text style={styles.answerText}>
           {answer}
         </Text>
       </TouchableOpacity>
@@ -91,7 +83,7 @@ class ThirdTabScreen extends Component {
   }
   renderQuestionScreen() {
     return (
-      <Animatable.View style={styles.container} ref='questions' >
+      <Animatable.View style={[styles.container, {padding: 12}]} ref='questions' >
         {this.renderQuestion(this.getQuestionToShow())}
         {this.getQuestionToShow().answers.map((answer, i) => this.renderAnswer(answer, i))}
       </Animatable.View>
@@ -131,29 +123,32 @@ class ThirdTabScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'stretch',
-    justifyContent: 'center',
-    backgroundColor: '#F5FCFF',
-
+    backgroundColor: '#52489C',
   },
   question: {
-    flex: 2,
-    justifyContent: 'center',
-    backgroundColor: '#CAD2C5',
-    padding: 20,
-
+    padding: 10,
+    paddingBottom: 30,
+  },
+  questionText: {
+    fontSize: 40,
+    fontWeight: '600',
+    color: '#ebebeb',
+    marginLeft: 5,
+    marginTop: 2,
   },
   answer: {
-    flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#59C3C3',
-    marginTop: 1,
-
+    marginBottom: 20,
+    padding: 10,
+    borderWidth: 2,
+    borderColor: '#bebebe',
+    borderRadius: 1,
   },
-  text: {
-    alignSelf: 'center',
-    fontSize: 25
+  answerText: {
+    fontSize: 22,
+    color: '#ebebeb'
   }
+
 });
 
 export default connect(mapStateToProps)(ThirdTabScreen);
