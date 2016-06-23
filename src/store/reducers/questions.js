@@ -6,21 +6,21 @@ const questionsData = [
       'mid',
       'advanced',
       'pro'
-    ]
+    ],
+    //active: 'true'
   },
   {
-    question: "What's your programming level?",
+    question: "How is RN ListView?",
     answers:[
-      'beginner',
-      'mid',
-      'advanced',
-      'pro'
+      'great',
+      'not-bad',
+      'bad',
+      'super-bad'
     ],
-    correctAnswerIndex: 2
+    correctAnswerIndex: 3,
+    active: 'true'
   },
 
-
-  //'', 'Ran Greenbaerg', 'Dan Abramov'
 ];
 
 const defaultState = {

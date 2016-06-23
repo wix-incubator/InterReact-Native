@@ -1,13 +1,13 @@
 import { Navigation } from 'react-native-navigation';
 
 import { registerScreens } from './src/screens';
-import firebaeService from './src/services/firebase';
+import firebaseService from './src/services/firebase';
 
 registerScreens(); // this is where you register all of your app's screens
 
 // connecting fitrebae
-const confId = '4255ec05-da65-b654-8c2d-bb7f71221c31';
-firebaeService.connect(confId);
+const confId = '4255ec05-da65-b654-8c2d-bb7f71221c32';
+firebaseService.connect(confId);
 
 // start the app
 Navigation.startTabBasedApp({

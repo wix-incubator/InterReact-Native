@@ -4,9 +4,19 @@ import {details} from './details';
 import {attendees} from './attendees';
 import {questions} from './questions';
 
+import reduceReducers from 'reduce-reducers';
 
-export default combineReducers({
-  details,
-  attendees,
-  questions
-});
+export default reduceReducers(
+  combineReducers({
+    details,
+    attendees,
+    questions
+  }),
+  (state, action) => {
+    switch (action.type) {
+      case actions.UPDATE_STATE:
+        return action.data;
+    }
+    return state;
+  }
+)

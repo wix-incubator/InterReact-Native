@@ -8,6 +8,7 @@ import {
   TextInput
 } from 'react-native';
 import {mapStateToProps} from '../../store';
+import * as actions from '../../store/constants/actions';
 import {connect} from 'react-redux';
 import {Navigation} from 'react-native-navigation';
 
@@ -16,6 +17,10 @@ class FirstTabScreen extends Component {
   constructor(props){
     super(props);
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+
+  componentDidMount() {
+    this.props.dispatch({type: actions.ATTENDEES_SEND_RSVP, data: {name: 'Hi', org: 'Google'}});
   }
 
   onNavigatorEvent(event) {
