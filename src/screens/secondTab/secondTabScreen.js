@@ -5,8 +5,10 @@ import {
   Text,
   View
 } from 'react-native';
+import {mapStateToProps} from '../../store';
+import {connect} from 'react-redux';
 
-export default class SecondTabScreen extends Component {
+class SecondTabScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -43,3 +45,5 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+export default connect(mapStateToProps)(SecondTabScreen);
