@@ -1,21 +1,24 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, Dimensions, Animated} from 'react-native';
 import _ from 'lodash';
-const {height, width} = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 
 
 const Overview = ({attendees}) =>
   <View style={styles.container}>
     <Text style={{fontSize: 28, color: '#52489c', fontWeight: '500'}}>{attendees.attendeesData.length} GUESTS ATTENDING</Text>
     <View style={{marginTop: 10}}>
-      <ByOrg attendees={attendees.attendeesData} />
+      <Text>Company</Text>
+      <BarChart groupFn={() => group(attendees.attendeesData, 'org')} />
+      <Text>Experience</Text>
+      <BarChart groupFn={() => group(attendees.attendeesData, 'experience')} />
     </View>
 
   </View>
 ;
 
-function byOrg(attendees) {
-  return _.groupBy(attendees, 'org');
+function group(attendees, field) {
+  return _.groupBy(attendees, field);
 }
 
 class Org extends Component {
@@ -52,8 +55,8 @@ class Org extends Component {
 
 }
 
-function ByOrg({attendees}) {
-  const grouped = byOrg(attendees);
+function BarChart({groupFn}) {
+  const grouped = groupFn();
   const sorted = Object.keys(grouped).sort((a, b) => grouped[a].length < grouped[b].length ? 1 : - 1);
   const maxLength = grouped[sorted[0]].length;
   return (
@@ -62,9 +65,9 @@ function ByOrg({attendees}) {
         sorted.map(org => <Org key={org} name={org} length={grouped[org].length} maxLength={maxLength} />)
       }
     </View>
-
   )
 }
+
 
 export default Overview;
 
