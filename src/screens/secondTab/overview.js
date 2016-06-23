@@ -30,7 +30,6 @@ class Org extends Component {
   }
 
   componentDidMount() {
-    //console.error('here')
     setTimeout(() =>
       Animated.spring(this.state.barWidth, {
         toValue: (width - 100) * (this.props.length/this.props.maxLength),

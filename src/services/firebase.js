@@ -2,8 +2,7 @@
 
 import _ from 'lodash';
 import Firebase from 'firebase';
-// import autobind from 'react-autobind';
-// import config from '../config';
+import initData from './initData';
 const FIREBASE_ENDPOINT = 'https://interactive-adf11.firebaseio.com';
 
 const defaultSettings = {
@@ -39,7 +38,6 @@ class FirebaseService {
     this.confId = confId;
     this.firebaseApp = new Firebase(FIREBASE_ENDPOINT);
     this.confNode = this.firebaseApp.child(`confs/${this.confId}`);
-
 
     // return new Promise((resolve, reject) => {
     //   this.firebaseApp.authWithCustomToken(token, (error, authData) => {
