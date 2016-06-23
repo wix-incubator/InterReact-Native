@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   View,
+  ScrollView,
   TouchableOpacity,
   Image,
   Dimensions
@@ -58,7 +59,7 @@ class FirstTabScreen extends Component {
     const {details, attendees} = this.props;
     const {title, description, date, city, coordinates} = details;
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <View style={styles.countdownSection}>
           <Countdown ticker={this.ticker} startTime={1466874046036}/>
         </View>
@@ -67,9 +68,6 @@ class FirstTabScreen extends Component {
           <Text style={{color: '#ffffff', fontSize: 42, fontWeight: '600'}}>{details.title}</Text>
           <Text style={{color: '#cad2c5', fontSize: 16, fontWeight: '500'}}>{details.description}</Text>
           <Text style={{marginTop: 15, color: '#ffffff', fontSize: 32, fontWeight: '500'}}>{details.date.toUpperCase()} &#x2022; {details.city.toUpperCase()} </Text>
-
-
-
         </View>
         <View style={styles.rsvpSection}>
           <TouchableOpacity style={styles.rsvpButton} onPress={this.rsvp}>
@@ -77,7 +75,7 @@ class FirstTabScreen extends Component {
           </TouchableOpacity>
           <Image style={styles.mapContainer} source={locationSrc}/>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -100,16 +98,17 @@ const styles = StyleSheet.create({
   },
   rsvpSection: {
     flex: 1,
-    paddingTop: 160,
+    paddingTop: 120,
     backgroundColor: '#59c3c3',
-    alignItems: 'center'
+    alignItems: 'center',
+    paddingBottom: 50
   },
   rsvpButton: {
     borderWidth: 2,
     borderColor: '#ebebeb',
-    padding: 15,
-    paddingLeft: 90,
-    paddingRight: 90,
+    padding: 12,
+    paddingLeft: 100,
+    paddingRight: 100,
   },
   rsvpButtonText: {
     color: '#ebebeb',
@@ -120,7 +119,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: -80,
     left: 20,
-    height: 200,
+    height: 180,
     width: width - 40,
     borderWidth: 3,
     borderColor: '#ebebeb'
