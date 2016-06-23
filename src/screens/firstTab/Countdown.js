@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   timeUnitLabel: {
     position: 'absolute',
     top: -7,
-    left: -3
+    left: 0
   },
   timeUnitLabelText: {
     fontSize: 10,
