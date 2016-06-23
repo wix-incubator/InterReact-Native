@@ -22,6 +22,41 @@ function group(attendees, field) {
   return _.groupBy(attendees, field);
 }
 
+class Org extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      barWidth: new Animated.Value(0)
+    }
+  }
+
+  componentDidMount() {
+    setTimeout(() =>
+      Animated.spring(this.state.barWidth, {
+        toValue: (width - 100) * (this.props.length/this.props.maxLength),
+        friction: 9,
+      }).start(),
+      100);
+  }
+
+  render() {
+    const {name, length} = this.props;
+    return (
+      <View style={{flexDirection: 'row', padding: 5}}>
+        <Animated.View style={[styles.orgLength, {width: this.state.barWidth}]}>
+          <Text style={styles.orgName}>{name}</Text>
+        </Animated.View>
+        <View style={styles.orgLabel}>
+          <Text style={{textAlign: 'right', fontSize: 18,}}>{length}</Text>
+        </View>
+      </View>
+    );
+  }
+
+}
+
+
+
 export default Overview;
 
 const styles = StyleSheet.create({

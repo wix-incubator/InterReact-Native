@@ -14,6 +14,7 @@ import {connect} from 'react-redux';
 import * as actions from '../../store/constants/actions';
 import {Navigation} from 'react-native-navigation';
 import Countdown, {TickEmitter} from './Countdown';
+import * as Constants from '../Constants'
 
 const locationSrc = require('../../images/location.png');
 const {width} = Dimensions.get('window');
@@ -21,7 +22,8 @@ const {width} = Dimensions.get('window');
 class FirstTabScreen extends Component {
 
   static navigatorStyle = {
-    navBarBackgroundColor: 'red'
+    navBarBackgroundColor: Constants.navBarBackgroundColor,
+    navBarTextColor: Constants.navBarTextColor
   };
 
   constructor(props) {

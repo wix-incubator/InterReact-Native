@@ -11,13 +11,15 @@ import {connect} from 'react-redux';
 import {CustomSegmentedControl} from 'react-native-custom-segmented-control'
 import Attendees from './attendees';
 import Overview from './overview';
+import * as Constants from '../Constants'
 
 const {height, width} = Dimensions.get('window');
 class SecondTabScreen extends Component {
 
   static navigatorStyle = {
     navBarNoBorder: true,
-    navBarBackgroundColor: 'red'
+    navBarBackgroundColor: Constants.navBarBackgroundColor,
+    navBarTextColor: Constants.navBarTextColor,
   };
 
   constructor(props) {
@@ -38,20 +40,20 @@ class SecondTabScreen extends Component {
               selectedLineHeight: 2,
               fontSize:17,
               fontWeight: 'bold', // bold, italic, regular (default)
-              segmentBackgroundColor: '#52489C',
+              segmentBackgroundColor: '#52489C11',
               segmentTextColor: '#000000',
               segmentHighlightTextColor: '#7a92a599',
-              selectedLineColor: '#ebebeb',
+              selectedLineColor: '#52489C',
               selectedLineAlign: 'text', // top/bottom/text
-              selectedLineMode: 'full', // full/text
-              selectedTextColor: '#ebebeb',
+              selectedLineMode: 'text', // full/text
+              selectedTextColor: '#52489C',
               selectedLinePaddingWidth: 12,
               segmentFontFamily: 'system-font-bold'
             }}
             animation={{
               duration: 0.6,
               damping: 0.5,
-              initialDampingVelocity: 0.4,
+              initialDampingVelocity: 0.6,
             }}
             onSelectedWillChange={(event) => {
               if (typeof(event.nativeEvent.selected) !== 'undefined') {
@@ -77,7 +79,7 @@ const styles = StyleSheet.create({
   segmented: {
     height: 50,
     width: width,
-    backgroundColor: '#cad2c5'
+    backgroundColor: '#EBEBEB'
     //marginVertical: 8
   }
 });

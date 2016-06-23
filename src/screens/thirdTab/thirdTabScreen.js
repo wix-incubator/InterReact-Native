@@ -17,11 +17,13 @@ import BarChart from '../secondTab/BarChart';
 const EMPTY_SCREEN = 'emptyScreen';
 const QUESTION_SCREEN = 'questionScreen';
 const RESULTS_SCREEN = 'resultsScreen';
+import * as Constants from '../Constants'
 
 class ThirdTabScreen extends Component {
 
   static navigatorStyle = {
-    navBarBackgroundColor: '#ebebeb'
+    navBarBackgroundColor: Constants.navBarBackgroundColor,
+    navBarTextColor: Constants.navBarTextColor
   };
 
   constructor(props) {
