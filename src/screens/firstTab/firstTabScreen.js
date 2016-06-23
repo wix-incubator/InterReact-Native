@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   },
   mapContainer: {
     position: 'absolute',
-    top: -100,
+    top: -80,
     left: 20,
     height: 200,
     width: width - 40,
