@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -54,18 +55,18 @@ class FirstTabScreen extends Component {
 
   }
   render() {
-    const {details, attendees} = this.props;
-    const {title, description, date, city, coordinates} = details;
+    const {details} = this.props;
+    const dateString = moment(details.startDate).format('MMMM DD');
     return (
       <ScrollView style={styles.container}>
         <View style={styles.countdownSection}>
-          <Countdown ticker={this.ticker} startTime={1466874046036}/>
+          <Countdown ticker={this.ticker} startTime={details.startDate}/>
         </View>
 
         <View style={styles.detailsSection}>
           <Text style={{color: '#ffffff', fontSize: 42, fontWeight: '600'}}>{details.title}</Text>
           <Text style={{color: '#cad2c5', fontSize: 16, fontWeight: '500'}}>{details.description}</Text>
-          <Text style={{marginTop: 15, color: '#ffffff', fontSize: 32, fontWeight: '500'}}>{details.date.toUpperCase()} &#x2022; {details.city.toUpperCase()} </Text>
+          <Text style={{marginTop: 15, color: '#ffffff', fontSize: 32, fontWeight: '500'}}>{dateString} &#x2022; {details.city.toUpperCase()} </Text>
         </View>
         <View style={styles.rsvpSection}>
           <TouchableOpacity style={styles.rsvpButton} onPress={this.rsvp}>

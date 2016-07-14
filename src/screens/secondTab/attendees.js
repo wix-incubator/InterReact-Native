@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import {View, Text, StyleSheet, ListView} from 'react-native';
 import Attendee from './attendee';
@@ -10,7 +11,7 @@ const renderRow = data => <Attendee {...data} />;
 const Attendees = ({attendees}) =>
   <View style={styles.container}>
     <ListView
-      dataSource={ds.cloneWithRows(attendees.attendeesData)}
+      dataSource={ds.cloneWithRows(_.get(attendees, 'attendeesData') || [])}
       renderRow={renderRow}
     />
   </View>;

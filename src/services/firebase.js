@@ -5,9 +5,9 @@ import Firebase from 'firebase';
 import initData from './initData';
 const FIREBASE_ENDPOINT = 'https://interactive-adf11.firebaseio.com';
 
-const defaultSettings = {
-  online: true
-};
+// const defaultSettings = {
+//   online: true
+// };
 
 class FirebaseService {
   constructor() {
@@ -38,17 +38,6 @@ class FirebaseService {
     this.confId = confId;
     this.firebaseApp = new Firebase(FIREBASE_ENDPOINT);
     this.confNode = this.firebaseApp.child(`confs/${this.confId}`);
-
-    // return new Promise((resolve, reject) => {
-    //   this.firebaseApp.authWithCustomToken(token, (error, authData) => {
-    //     if (error) { reject(error); }
-    //     else {
-    //
-    //       // const node = this.firebaseApp.child(`sites/${siteId}/installed`);
-    //       // node.once('value', (data) => resolve(!!data.val()));
-    //     }
-    //   });
-    // });
   }
 
   // return a promise
