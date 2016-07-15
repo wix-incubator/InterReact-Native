@@ -16,6 +16,7 @@
     "react-native-animatable": "^0.6.1",
     "react-native-custom-segmented-control": "^3.0.4",
     "react-native-navigation": "^1.0.15",
+    "react-native-parallax-view": "^2.0.5",
     "react-redux": "^4.4.5",
     "reduce-reducers": "^0.1.2",
     "redux": "^3.5.2",

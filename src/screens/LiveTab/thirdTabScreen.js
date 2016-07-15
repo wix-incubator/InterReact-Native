@@ -7,7 +7,8 @@ import {
   View,
   TouchableOpacity,
   Animated,
-  AlertIOS
+  AlertIOS,
+  ScrollView
 } from 'react-native';
 import {mapStateToProps} from '../../store';
 import {connect} from 'react-redux';
@@ -98,24 +99,28 @@ class ThirdTabScreen extends Component {
   }
   renderQuestionScreen() {
     return (
-      <Animatable.View style={[styles.container, {padding: 12}]} ref='questions' >
-        {this.renderQuestion(this.getQuestionToShow())}
-        {this.getQuestionToShow().answers.map((answer, i) => this.renderAnswer(answer, i))}
-      </Animatable.View>
+      <ScrollView style={styles.container}>
+        <Animatable.View style={[styles.container, {padding: 12}]} ref='questions' >
+          {this.renderQuestion(this.getQuestionToShow())}
+          {this.getQuestionToShow().answers.map((answer, i) => this.renderAnswer(answer, i))}
+        </Animatable.View>
+      </ScrollView>
     )
   }
 
   renderResultsScreen() {
     return (
-      <Animatable.View style={[styles.container, {padding: 20}]} ref='results' >
-        <BarChart groupFn={() => {
-          const grouped = _.groupBy(this.getQuestionToShow().results);
-          const result = {};
-          Object.keys(grouped).map(i => result[this.getAnswer(i)] = grouped[i]);
-          return result
-         }
-        } />
-      </Animatable.View>
+      <ScrollView style={styles.container}>
+        <Animatable.View style={[styles.container, {padding: 20}]} ref='results' >
+          <BarChart groupFn={() => {
+            const grouped = _.groupBy(this.getQuestionToShow().results);
+            const result = {};
+            Object.keys(grouped).map(i => result[this.getAnswer(i)] = grouped[i]);
+            return result
+           }
+          } />
+        </Animatable.View>
+      </ScrollView>
     )
   }
 

@@ -17,6 +17,8 @@ import {Navigation} from 'react-native-navigation';
 import Countdown, {TickEmitter} from './Countdown';
 import LocationView from './LocationView';
 import * as Constants from '../Constants';
+import ParallaxView from 'react-native-parallax-view'
+
 
 const locationSrc = require('../../images/location.png');
 
@@ -60,28 +62,33 @@ class FirstTabScreen extends Component {
     const {details} = this.props;
     const dateString = moment(details.startDate).format('MMMM DD');
     return (
-      <ScrollView style={styles.container}>
-        <View style={styles.countdownSection}>
-          <Countdown ticker={this.ticker} startTime={details.startDate}/>
-        </View>
+      <ParallaxView
+        backgroundSource={{uri: details.logoImageURL}}
+        windowHeight={80}>
+        <ScrollView style={styles.container}>
 
-        <View style={styles.detailsSection}>
-          <Text style={{color: '#ffffff', fontSize: 42, fontWeight: '600'}}>{details.title}</Text>
-          <Text style={{color: '#cad2c5', fontSize: 16, fontWeight: '500'}}>{details.description}</Text>
-          <Text style={{marginTop: 15, color: '#ffffff', fontSize: 32, fontWeight: '500'}}>{dateString} &#x2022; {details.city.toUpperCase()} </Text>
-        </View>
-        <View style={styles.rsvpSection}>
-          <TouchableOpacity style={styles.rsvpButton} onPress={this.rsvp}>
-            <Text style={styles.rsvpButtonText}>RSVP</Text>
-          </TouchableOpacity>
-          <LocationView
-            title={details.title}
-            latitude={details.location.latitude}
-            longitude={details.location.longitude}
-          >
-          </LocationView>
-        </View>
-      </ScrollView>
+          <View style={styles.countdownSection}>
+            <Countdown ticker={this.ticker} startTime={details.startDate}/>
+          </View>
+
+          <View style={styles.detailsSection}>
+            <Text style={{color: '#ffffff', fontSize: 42, fontWeight: '600'}}>{details.title}</Text>
+            <Text style={{color: '#cad2c5', fontSize: 16, fontWeight: '500'}}>{details.description}</Text>
+            <Text style={{marginTop: 15, color: '#ffffff', fontSize: 32, fontWeight: '500'}}>{dateString} &#x2022; {details.city.toUpperCase()} </Text>
+          </View>
+          <View style={styles.rsvpSection}>
+            <TouchableOpacity style={styles.rsvpButton} onPress={this.rsvp}>
+              <Text style={styles.rsvpButtonText}>RSVP</Text>
+            </TouchableOpacity>
+            <LocationView
+              title={details.title}
+              latitude={details.location.latitude}
+              longitude={details.location.longitude}
+            >
+            </LocationView>
+          </View>
+        </ScrollView>
+      </ParallaxView>
     );
   }
 }
