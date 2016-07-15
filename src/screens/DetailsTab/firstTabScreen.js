@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ebebeb'
   },
   detailsSection: {
+    flex: 1.5,
     backgroundColor: '#52489c',
     paddingLeft: 20,
     paddingTop: 15,
@@ -107,7 +108,7 @@ const styles = StyleSheet.create({
     paddingTop: 120,
     backgroundColor: '#59c3c3',
     alignItems: 'center',
-    paddingBottom: 50
+    paddingBottom: 60
   },
   rsvpButton: {
     borderWidth: 2,

@@ -80,7 +80,7 @@ export default class Countdown extends TimerComponent {
     if (now >= this.props.startTime) {
       // Time has passed
       return (
-        <View style={styles.container, {backgroundColor: '#24b37a'}}>
+        <View style={styles.beganContainer}>
           <Text style={{fontSize: 50, color: '#ffffff', textAlign: 'center'}}>Began!</Text>
         </View>
       );
@@ -117,13 +117,18 @@ const styles = StyleSheet.create({
     paddingLeft: 50,
     paddingRight: 30
   },
+  beganContainer: {
+    flex: 1,
+    backgroundColor: '#24b37a',
+  },
+
   timeUnit: {
     width: 60,
     height: 50
   },
   timeUnitText: {
     fontSize: 40,
-    color: '#52489c',
+    color: '#52489c', // Was #52489c
   },
   timeUnitLabel: {
     position: 'absolute',
