@@ -1,9 +1,9 @@
 import { Navigation } from 'react-native-navigation';
 
-import FirstTabScreen from './firstTab/firstTabScreen';
-import RSVPScreen from './firstTab/rsvpScreen';
-import SecondTabScreen from './secondTab/secondTabScreen';
-import ThirdTabScreen from './thirdTab/thirdTabScreen';
+import FirstTabScreen from './DetailsTab/firstTabScreen';
+import RSVPScreen from './DetailsTab/rsvpScreen';
+import SecondTabScreen from './GuestsTab/secondTabScreen';
+import ThirdTabScreen from './LiveTab/thirdTabScreen';
 
 import {store} from '../store';
 import {Provider} from 'react-redux';

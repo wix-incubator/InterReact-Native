@@ -76,6 +76,17 @@ export class TickEmitter extends EventEmitter {
 export default class Countdown extends TimerComponent {
 
   render() {
+    const now = Date.now()
+    if (now >= this.props.startTime) {
+      // Time has passed
+      return (
+        <View style={styles.container, {backgroundColor: '#24b37a'}}>
+          <Text style={{fontSize: 50, color: '#ffffff', textAlign: 'center'}}>Began!</Text>
+        </View>
+      );
+
+    }
+
     const countdown = [{value: this.state.leftTime.days(), label: 'DAYS'},
                        {value: this.state.leftTime.hours(), label: 'HRS'},
                        {value: this.state.leftTime.minutes(), label: 'MINS'},

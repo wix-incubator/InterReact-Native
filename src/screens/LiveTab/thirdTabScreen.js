@@ -12,7 +12,7 @@ import {
 import {mapStateToProps} from '../../store';
 import {connect} from 'react-redux';
 import * as Animatable from 'react-native-animatable';
-import BarChart from '../secondTab/BarChart';
+import BarChart from '../GuestsTab/BarChart';
 
 const EMPTY_SCREEN = 'emptyScreen';
 const QUESTION_SCREEN = 'questionScreen';

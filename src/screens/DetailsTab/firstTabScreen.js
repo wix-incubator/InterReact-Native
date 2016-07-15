@@ -15,9 +15,11 @@ import {connect} from 'react-redux';
 import * as actions from '../../store/constants/actions';
 import {Navigation} from 'react-native-navigation';
 import Countdown, {TickEmitter} from './Countdown';
-import * as Constants from '../Constants'
+import LocationView from './LocationView';
+import * as Constants from '../Constants';
 
 const locationSrc = require('../../images/location.png');
+
 const {width} = Dimensions.get('window');
 
 class FirstTabScreen extends Component {
@@ -72,7 +74,12 @@ class FirstTabScreen extends Component {
           <TouchableOpacity style={styles.rsvpButton} onPress={this.rsvp}>
             <Text style={styles.rsvpButtonText}>RSVP</Text>
           </TouchableOpacity>
-          <Image style={styles.mapContainer} source={locationSrc}/>
+          <LocationView
+            title={details.title}
+            latitude={details.location.latitude}
+            longitude={details.location.longitude}
+          >
+          </LocationView>
         </View>
       </ScrollView>
     );
@@ -85,7 +92,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   countdownSection: {
-    height: 90,
+    flex: 1,
     paddingTop: 10,
     backgroundColor: '#ebebeb'
   },
