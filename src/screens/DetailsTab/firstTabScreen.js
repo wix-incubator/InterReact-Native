@@ -60,14 +60,13 @@ class FirstTabScreen extends Component {
   }
   render() {
     const {details} = this.props;
-    const dateString = moment(details.startDate).format('MMMM DD');
+    const dateString = moment(details.startDate).format('MMMM DD - HH:mm');
     return (
       <ParallaxView
         style={{backgroundColor: '#59c3c3'}}
         backgroundSource={{uri: details.logoImageURL}}
         windowHeight={80}>
         <ScrollView style={styles.container}>
-
           <View style={styles.countdownSection}>
             <Countdown ticker={this.ticker} startTime={details.startDate}/>
           </View>
@@ -75,7 +74,7 @@ class FirstTabScreen extends Component {
           <View style={styles.detailsSection}>
             <Text style={{color: '#ffffff', fontSize: 42, fontWeight: '600'}}>{details.title}</Text>
             <Text style={{color: '#cad2c5', fontSize: 16, fontWeight: '500'}}>{details.description}</Text>
-            <Text style={{marginTop: 15, color: '#ffffff', fontSize: 32, fontWeight: '500'}}>{dateString} &#x2022; {details.city.toUpperCase()} </Text>
+            <Text style={{marginTop: 15, color: '#ffffff', fontSize: 32, fontWeight: '500', paddingBottom: 30}}>{dateString} &#x2022; {'\n'}{details.city.toUpperCase()} </Text>
           </View>
           <View style={styles.rsvpSection}>
             <TouchableOpacity style={styles.rsvpButton} onPress={this.rsvp}>
@@ -106,7 +105,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ebebeb'
   },
   detailsSection: {
-    flex: 1.5,
+    flex: 2.5,
     backgroundColor: '#52489c',
     paddingLeft: 20,
     paddingTop: 15,
@@ -122,7 +121,6 @@ const styles = StyleSheet.create({
   rsvpButton: {
     borderWidth: 2,
     borderColor: '#ebebeb',
-    borderRadius: 20,
     padding: 12,
     paddingLeft: 100,
     paddingRight: 100,

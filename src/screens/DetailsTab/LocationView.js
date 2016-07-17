@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
+import _ from 'lodash'
 import {
+  Platform,
   StyleSheet,
   MapView,
   Text,
+  Image,
   View,
-  Dimensions
+  Dimensions,
+  TouchableOpacity,
+  Alert,
+  AlertIOS,
+  Linking
  } from 'react-native';
 
 const {width} = Dimensions.get('window');
@@ -15,17 +22,47 @@ export default class LocationView extends Component {
     super(props);
   }
 
+  navigatePressed() {
+    if (Platform.OS == 'ios') {
+      const url = `http://maps.apple.com/?dirflag=d&daddr=${this.props.latitude}, ${this.props.longitude}`;
+      Linking.openURL(url);
+    }
+    else if (Platform.OS == 'android') {
+      Alert.alert('Error', 'This feature is not comptible with Android yet...');
+    }
+  }
+
   render() {
     console.log("My longitude: " + this.props.longitude)
     return (
       <MapView
         style={styles.mapContainer}
         region={{latitude: this.props.latitude, longitude: this.props.longitude, latitudeDelta: 0.01, longitudeDelta: 0.01}}
-        annotations={[
-          {latitude: this.props.latitude, longitude: this.props.longitude, animateDrop: true, draggable: false, title: this.props.title, subtitle: this.props.description}
-        ]}
+        annotations={
+          [
+            {
+              latitude: this.props.latitude,
+              longitude: this.props.longitude,
+              animateDrop: true,
+              draggable: false,
+              title: this.props.title,
+              subtitle: this.props.description,
+              rightCalloutView:
+              <View>
+                <TouchableOpacity onPress={this.navigatePressed.bind(this)}>
+                  <Image style={{height: 30, width: 30}} source={{uri: 'https://cdn4.iconfinder.com/data/icons/military-strategy/512/compass-512.png'}} />
+                </TouchableOpacity>
+              </View>
+            }
+          ]
+        }
 
-        showsUserLocation={true}
+        scrollEnabled={false}
+        pitchEnabled={false}
+        rotateEnabled={false}
+        showsCompass={false}
+        zoomEnabled={true}
+        showsUserLocation={false}
       />
     );
   }
@@ -46,6 +83,7 @@ const styles = StyleSheet.create(
       height: 180,
       width: width - 40,
       borderWidth: 3,
+      borderRadius: 5,
       borderColor: '#ebebeb'
     },
   }
