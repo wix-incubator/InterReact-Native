@@ -28,6 +28,35 @@ export const questions = (state = defaultState, action) => {
       _.set(newState, `questionsData[${questionIndex}].results`, newResultData);
 
       return newState
+
+    case actions.LIVE_QUESTION_ACTIVATE:
+      const newQuestion = action.data.question;
+
+      // Activate the question
+      _.set(newQuestion, 'active', true);
+
+      // Get the array from the state
+      let questionsData = _.get(state, 'questionsData');
+      // Remove the question that is the same as the question we want to activate
+      _.remove(questionsData, (question) => question.question == action.data.question.question);
+
+      // Set all the questions as inactive
+      _.map(questionsData, (question) => _.set(question, 'active', false));
+
+      // Add the activeted question to the array
+      questionsData.push(newQuestion);
+
+      // Set the new array in the state
+      _.set(state, 'questionsData', questionsData);
+      return state;
+
+    case actions.LIVE_QUESTION_INACTIVE:
+      // Set all the questions as inactive
+      let questionsArray = _.get(state, 'questionsData');
+      _.map(questionsArray, (question) => _.set(question, 'active', false));
+      _.set(state, 'questionsData', questionsArray);
+      return state;
+
   }
   return state;
 };

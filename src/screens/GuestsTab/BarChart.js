@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     height: 40,
     marginBottom: 10,
     marginTop: 10,
-    borderRadius: 1,
+    borderRadius: 5,
   },
   orgLabel: {
     alignSelf: 'center',

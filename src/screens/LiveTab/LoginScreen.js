@@ -8,9 +8,10 @@ import {
   TouchableOpacity,
   Animated,
   AlertIOS,
-  ScrollView
+  ScrollView,
+  Alert,
 } from 'react-native';
-import {mapStateToProps} from '../../store';
+// import {mapStateToProps} from '../../store';
 import {connect} from 'react-redux';
 import * as Animatable from 'react-native-animatable';
 import BarChart from '../GuestsTab/BarChart';
@@ -18,6 +19,7 @@ import * as actions from '../../store/constants/actions';
 import {Navigation} from 'react-native-navigation';
 
 const LOGIN_SCREEN = 'loginScreen'
+const QUESTIONS_SCREEN = 'questionsScreen'
 
 import * as Constants from '../Constants'
 
@@ -54,12 +56,50 @@ class LoginScreen extends Component {
     }
   }
 
+  submitButtonClicked() {
+    const password = ''
+    if (this.passwordTextField === password) {
+      this.setState({screenState: QUESTIONS_SCREEN});
+    }
+    else {
+      Alert.alert('Error', 'Wrong password');
+    }
+  }
+
   renderLoginScreen() {
     return (
       <View style={styles.container}>
         <Text style={{color: 'white'}}>Please enter your password:</Text>
-        <TextInput style={styles.input} secureTextEntry={true}/>
-        <TouchableOpacity style={styles.submitButton}><Text style={{color: 'white'}}>Login</Text></TouchableOpacity>
+        <TextInput style={styles.input} secureTextEntry={true} onChange={(event) => this.passwordTextField = event.nativeEvent.text}/>
+        <TouchableOpacity style={styles.submitButton} onPress={this.submitButtonClicked.bind(this)}><Text style={{color: 'white'}}>Login</Text></TouchableOpacity>
+      </View>
+    );
+  }
+
+  questionPressed(question) {
+    if (question.active) {
+      this.props.dispatch({type: actions.LIVE_QUESTION_INACTIVE, data: {question}});
+    }
+    else {
+      this.props.dispatch({type: actions.LIVE_QUESTION_ACTIVATE, data: {question}});
+    }
+  }
+
+  renderQuestion(question) {
+    const questionJSX = question.active ? <View key={question.question} style={styles.selectedQuestion}><Text>{question.question}</Text></View>
+    : <View key={question.question} style={styles.question}><Text>{question.question}</Text></View>
+
+    return (
+      <TouchableOpacity key={question.question} onPress={() => this.questionPressed(question)}>
+        {questionJSX}
+      </TouchableOpacity>
+    )
+  }
+
+  renderQuestionsScreen() {
+    return (
+      <View style={styles.questionsContainer}>
+        {_.map(this.props.questions, (question) => this.renderQuestion(question))}
       </View>
     );
   }
@@ -68,6 +108,10 @@ class LoginScreen extends Component {
     if (this.state.screenState == LOGIN_SCREEN) {
       return this.renderLoginScreen();
     }
+    else if (this.state.screenState == QUESTIONS_SCREEN) {
+      return this.renderQuestionsScreen();
+    }
+
     return (
       <View></View>
     );
@@ -75,6 +119,11 @@ class LoginScreen extends Component {
 }
 
 const styles = StyleSheet.create({
+  questionsContainer: {
+    alignItems: 'center',
+    flex: 1,
+    backgroundColor: '#31a39c',
+  },
   container: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -98,6 +147,26 @@ const styles = StyleSheet.create({
     paddingRight: 100,
     marginTop: 20,
   },
+  selectedQuestion: {
+    borderWidth: 2,
+    borderColor: '#ebebeb',
+    padding: 12,
+    marginTop: 20,
+    backgroundColor: 'green'
+  },
+  question: {
+    borderWidth: 2,
+    borderColor: '#ebebeb',
+    padding: 12,
+    marginTop: 20,
+  }
 });
+
+function mapStateToProps(state) {
+  const questionsData = state.questions.questionsData
+  return {
+    questions: questionsData,
+  };
+}
 
 export default connect(mapStateToProps)(LoginScreen);

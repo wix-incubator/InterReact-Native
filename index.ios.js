@@ -25,7 +25,7 @@ firebaseService.readConf().then(data => {
         label: 'Details',
         screen: 'example.FirstTabScreen', // this is a registered name for a screen
         title: 'Details',
-        icon: require('./src/images/details.png'),
+        icon: require('./src/images/eventIcon.png'),
       },
       {
         label: 'Guests',
