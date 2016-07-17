@@ -61,7 +61,7 @@ export default class LocationView extends Component {
         pitchEnabled={false}
         rotateEnabled={false}
         showsCompass={false}
-        zoomEnabled={true}
+        zoomEnabled={false}
         showsUserLocation={false}
       />
     );

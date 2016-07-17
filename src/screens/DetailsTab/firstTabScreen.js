@@ -28,7 +28,8 @@ class FirstTabScreen extends Component {
 
   static navigatorStyle = {
     navBarBackgroundColor: Constants.navBarBackgroundColor,
-    navBarTextColor: Constants.navBarTextColor
+    navBarTextColor: Constants.navBarTextColor,
+    navBarBlur: true,
   };
 
   constructor(props) {
