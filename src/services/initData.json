@@ -17,11 +17,17 @@
           "experience" : "Expert",
           "name" : "Dan Abramov",
           "org" : "Facebook"
+        }, {
+          "company" : "",
+          "experience" : "",
+          "name" : "Tal Kol",
+          "org" : "Wix"
         } ]
       },
       "details" : {
         "city" : "Tel Aviv",
         "description" : "Lets talk react native",
+        "detailedLocation" : "Sarona Building Floor 1",
         "location" : {
           "latitude" : 32.072392,
           "longitude" : 34.786619
@@ -32,14 +38,16 @@
       },
       "questions" : {
         "questionsData" : [ {
+          "active" : false,
           "answers" : [ "beginner", "mid", "advanced", "pro" ],
-          "question" : "What's your programming level?"
+          "question" : "What's your programming level?",
+          "results" : []
         }, {
-          "active" : "true",
+          "active" : false,
           "answers" : [ "NavigatorIOS", "NavigatorExperimental", "React Native Navigation", "Other/None" ],
           "correctAnswerIndex" : 3,
-          "question" : "What do you use to navigate in RN?",
-          "results" : [ 0, 0, 1, 1, 1, 1, 1, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2 ]
+          "question" : "What do you use to navifffgate in RN?",
+          "results" : []
         } ]
       }
     }

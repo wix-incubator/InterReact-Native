@@ -10,10 +10,9 @@ export default reduceReducers(
   combineReducers({
     details,
     attendees,
-    questions
+    questions,
   }),
   (state, action) => {
-    console.log('here', action)
     switch (action.type) {
       case actions.UPDATE_STATE:
         return action.data;

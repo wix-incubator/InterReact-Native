@@ -14,6 +14,7 @@ import {mapStateToProps} from '../../store';
 import {connect} from 'react-redux';
 import * as Animatable from 'react-native-animatable';
 import BarChart from '../GuestsTab/BarChart';
+import * as actions from '../../store/constants/actions';
 
 const EMPTY_SCREEN = 'emptyScreen';
 const QUESTION_SCREEN = 'questionScreen';
@@ -47,15 +48,22 @@ class ThirdTabScreen extends Component {
   onNavigatorEvent(event) {
     if (event.type == 'NavBarButtonPress') {
       if (event.id == 'do') {
-        this.setState({screenState: QUESTION_SCREEN});
+        // this.setState({screenState: QUESTION_SCREEN});
       }
     }
+  }
+
+  startLiveButtonClicked() {
+    this.setState({screenState: QUESTION_SCREEN});
   }
 
   renderEmptyState() {
     return (
       <Animatable.View style={[styles.container, {justifyContent: 'center', alignItems: 'center'}]} ref='container'>
         <Text style={{fontSize:42, color: '#ebebeb', textAlign: 'center', padding: 20}}>ARE YOU READY?!</Text>
+        <TouchableOpacity style={styles.startButton }onPress={this.startLiveButtonClicked.bind(this)}>
+          <Text style={styles.startButtonText}>Start Live</Text>
+        </TouchableOpacity>
       </Animatable.View>
     )
   }
@@ -78,7 +86,7 @@ class ThirdTabScreen extends Component {
 
   answerPressed(i) {
     const answerRef = 'answer' + i;
-    //console.error(this.refs.answer1)
+    this.props.dispatch({type: actions.LIVE_RESULT_SUBMITTED, data: {question: this.getQuestionToShow(), index: i}});
     this.setState({screenState: RESULTS_SCREEN});
 
   }
@@ -98,6 +106,18 @@ class ThirdTabScreen extends Component {
     )
   }
   renderQuestionScreen() {
+    if (!this.getQuestionToShow()) {
+      return (
+        <ScrollView style={styles.container, {backgroundColor: '#ff4b48'}}>
+          <View style={styles.question}>
+            <Text style={styles.questionText}>
+              There is no an active question right now...
+            </Text>
+            <Text style={{color: '#ffffff'}}>When the host active a question, you will be the first to see it here.</Text>
+          </View>
+        </ScrollView>
+      );
+    }
     return (
       <ScrollView style={styles.container}>
         <Animatable.View style={[styles.container, {padding: 12}]} ref='questions' >
@@ -109,6 +129,11 @@ class ThirdTabScreen extends Component {
   }
 
   renderResultsScreen() {
+    if (!this.getQuestionToShow()) {
+      // TODO: To fix the warning - use componentDidMound and setState if the state is RESULT_SCREEN and there is now question to show
+      this.setState({screenState: QUESTION_SCREEN})
+      return (<View></View>);
+    }
     return (
       <ScrollView style={styles.container}>
         <Animatable.View style={[styles.container, {padding: 20}]} ref='results' >
@@ -171,6 +196,19 @@ const styles = StyleSheet.create({
   answerText: {
     fontSize: 22,
     color: '#ebebeb'
+  },
+  startButton: {
+    borderWidth: 2,
+    borderColor: '#ebebeb',
+    padding: 12,
+    paddingLeft: 100,
+    paddingRight: 100,
+  },
+  startButtonText: {
+    textAlign: 'center',
+    color: '#ebebeb',
+    fontSize: 28,
+    fontWeight: '600'
   }
 
 });

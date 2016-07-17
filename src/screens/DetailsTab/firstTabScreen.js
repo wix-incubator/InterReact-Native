@@ -63,6 +63,7 @@ class FirstTabScreen extends Component {
     const dateString = moment(details.startDate).format('MMMM DD');
     return (
       <ParallaxView
+        style={{backgroundColor: '#59c3c3'}}
         backgroundSource={{uri: details.logoImageURL}}
         windowHeight={80}>
         <ScrollView style={styles.container}>
@@ -82,6 +83,7 @@ class FirstTabScreen extends Component {
             </TouchableOpacity>
             <LocationView
               title={details.title}
+              description={details.detailedLocation}
               latitude={details.location.latitude}
               longitude={details.location.longitude}
             >
@@ -96,7 +98,7 @@ class FirstTabScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#59c3c3',
   },
   countdownSection: {
     flex: 1,
@@ -120,6 +122,7 @@ const styles = StyleSheet.create({
   rsvpButton: {
     borderWidth: 2,
     borderColor: '#ebebeb',
+    borderRadius: 20,
     padding: 12,
     paddingLeft: 100,
     paddingRight: 100,
