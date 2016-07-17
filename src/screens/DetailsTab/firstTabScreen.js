@@ -64,7 +64,7 @@ class FirstTabScreen extends Component {
     const dateString = moment(details.startDate).format('MMMM DD - HH:mm');
     return (
       <ParallaxView
-        style={{backgroundColor: '#59c3c3'}}
+        style={{backgroundColor: '#165574', height: 80}}
         backgroundSource={{uri: details.logoImageURL}}
         windowHeight={80}>
         <ScrollView style={styles.container}>
@@ -73,9 +73,11 @@ class FirstTabScreen extends Component {
           </View>
 
           <View style={styles.detailsSection}>
-            <Text style={{color: '#ffffff', fontSize: 42, fontWeight: '600'}}>{details.title}</Text>
-            <Text style={{color: '#cad2c5', fontSize: 16, fontWeight: '500'}}>{details.description}</Text>
-            <Text style={{marginTop: 15, color: '#ffffff', fontSize: 32, fontWeight: '500', paddingBottom: 30}}>{dateString} &#x2022; {'\n'}{details.city.toUpperCase()} </Text>
+            <View style={{justifyContent: 'center'}}>
+              <Text style={{color: '#ffffff', fontSize: 28, }}>{details.title}</Text>
+              <Text style={{color: '#cad2c5', fontSize: 16, fontWeight: '500'}}>{details.description}</Text>
+              <Text style={{marginTop: 15, color: '#ffffff', fontSize: 28, marginBottom: 80}}>{dateString} &#x2022;{details.city.toUpperCase()} </Text>
+            </View>
           </View>
           <View style={styles.rsvpSection}>
             <TouchableOpacity style={styles.rsvpButton} onPress={this.rsvp}>
@@ -98,24 +100,29 @@ class FirstTabScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#59c3c3',
+    backgroundColor: '#165574',
   },
   countdownSection: {
-    flex: 1,
+    flex: 0.5,
     paddingTop: 10,
-    backgroundColor: '#ebebeb'
+    backgroundColor: '#ebebeb',
+    paddingLeft: 25,
+    paddingRight: 25,
   },
   detailsSection: {
-    flex: 2.5,
-    backgroundColor: '#52489c',
-    paddingLeft: 20,
-    paddingTop: 15,
+    flex: 1,
+    backgroundColor: '#165574',
+    paddingLeft: 25,
+    paddingRight: 25,
+    paddingTop: 40,
     paddingBottom: 120,
   },
   rsvpSection: {
     flex: 1,
     paddingTop: 120,
-    backgroundColor: '#59c3c3',
+    paddingLeft: 25,
+    paddingRight: 25,
+    backgroundColor: '#165574',
     alignItems: 'center',
     paddingBottom: 60
   },
@@ -125,11 +132,13 @@ const styles = StyleSheet.create({
     padding: 12,
     paddingLeft: 100,
     paddingRight: 100,
+    width: width - 40,
+    borderRadius: 5,
   },
   rsvpButtonText: {
     color: '#ebebeb',
     fontSize: 28,
-    fontWeight: '600'
+    textAlign: 'center'
   },
   mapContainer: {
     position: 'absolute',

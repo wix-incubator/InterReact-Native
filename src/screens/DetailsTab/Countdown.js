@@ -128,7 +128,8 @@ const styles = StyleSheet.create({
   },
   timeUnitText: {
     fontSize: 40,
-    color: '#52489c', // Was #52489c
+    color: '#165574', // Was #52489c
+    paddingRight: 10,
   },
   timeUnitLabel: {
     position: 'absolute',
@@ -137,6 +138,6 @@ const styles = StyleSheet.create({
   },
   timeUnitLabelText: {
     fontSize: 10,
-    color: '#52489c',
+    color: '#165574',
   }
 });

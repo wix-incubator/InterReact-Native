@@ -43,10 +43,10 @@ class SecondTabScreen extends Component {
               segmentBackgroundColor: '#52489C11',
               segmentTextColor: '#000000',
               segmentHighlightTextColor: '#7a92a599',
-              selectedLineColor: '#52489C',
+              selectedLineColor: '#165574',
               selectedLineAlign: 'text', // top/bottom/text
               selectedLineMode: 'text', // full/text
-              selectedTextColor: '#52489C',
+              selectedTextColor: '#165574',
               selectedLinePaddingWidth: 12,
               segmentFontFamily: 'system-font-bold'
             }}
@@ -74,7 +74,7 @@ class SecondTabScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#59C3C3',
+    backgroundColor: '#165574',
   },
   segmented: {
     height: 50,

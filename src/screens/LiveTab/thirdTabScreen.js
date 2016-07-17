@@ -1,7 +1,6 @@
 import _ from 'lodash';
 import React, {Component} from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
@@ -15,6 +14,7 @@ import {connect} from 'react-redux';
 import * as Animatable from 'react-native-animatable';
 import BarChart from '../GuestsTab/BarChart';
 import * as actions from '../../store/constants/actions';
+import {Navigation} from 'react-native-navigation';
 
 const EMPTY_SCREEN = 'emptyScreen';
 const QUESTION_SCREEN = 'questionScreen';
@@ -25,8 +25,8 @@ class ThirdTabScreen extends Component {
   static navigatorButtons = {
     rightButtons: [
       {
-        title: '', // for a textual button, provide the button title (label)
-        id: 'do', // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
+        title: 'Host login', // for a textual button, provide the button title (label)
+        id: 'host', // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
         disableIconTint: true
         }
       ]
@@ -47,8 +47,18 @@ class ThirdTabScreen extends Component {
 
   onNavigatorEvent(event) {
     if (event.type == 'NavBarButtonPress') {
-      if (event.id == 'do') {
-        // this.setState({screenState: QUESTION_SCREEN});
+      if (event.id == 'host') {
+        Navigation.showModal({
+          screen: 'live.loginScreen',
+          title: 'Login',
+          navigatorStyle: {},
+          navigatorButtons: {
+            leftButtons: [{
+              title: 'Cancel',
+              id: 'cancel'
+            }]
+          }
+        });
       }
     }
   }
@@ -60,9 +70,9 @@ class ThirdTabScreen extends Component {
   renderEmptyState() {
     return (
       <Animatable.View style={[styles.container, {justifyContent: 'center', alignItems: 'center'}]} ref='container'>
-        <Text style={{fontSize:42, color: '#ebebeb', textAlign: 'center', padding: 20}}>ARE YOU READY?!</Text>
+        <Text style={{fontSize:28, color: '#ebebeb', textAlign: 'center', padding: 20}}>ARE YOU READY?!</Text>
         <TouchableOpacity style={styles.startButton }onPress={this.startLiveButtonClicked.bind(this)}>
-          <Text style={styles.startButtonText}>Start Live</Text>
+          <Text style={styles.startButtonText}>Join Live</Text>
         </TouchableOpacity>
       </Animatable.View>
     )
@@ -108,14 +118,14 @@ class ThirdTabScreen extends Component {
   renderQuestionScreen() {
     if (!this.getQuestionToShow()) {
       return (
-        <ScrollView style={styles.container, {backgroundColor: '#ff4b48'}}>
-          <View style={styles.question}>
-            <Text style={styles.questionText}>
+        <View style={styles.container, {backgroundColor: '#4ca0c0', justifyContent: 'center', flex: 1}}>
+          <View style={styles.question, {margin: 60}}>
+            <Text style={styles.questionText, {textAlign: 'center', fontSize: 28, color: 'white'}}>
               There is no an active question right now...
             </Text>
-            <Text style={{color: '#ffffff'}}>When the host active a question, you will be the first to see it here.</Text>
+            <Text style={{color: '#ffffff', paddingTop: 30, textAlign: 'center'}}>When the host active a question, you will be the first one to see it here.</Text>
           </View>
-        </ScrollView>
+        </View>
       );
     }
     return (
@@ -172,15 +182,14 @@ class ThirdTabScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#52489C',
+    backgroundColor: '#165574',
   },
   question: {
     padding: 10,
     paddingBottom: 30,
   },
   questionText: {
-    fontSize: 40,
-    fontWeight: '600',
+    fontSize: 28,
     color: '#ebebeb',
     marginLeft: 5,
     marginTop: 2,
@@ -188,21 +197,26 @@ const styles = StyleSheet.create({
   answer: {
     justifyContent: 'center',
     marginBottom: 20,
-    padding: 10,
+    padding: 20,
+    paddingLeft: 50,
+    paddingRight: 50,
     borderWidth: 2,
     borderColor: '#bebebe',
-    borderRadius: 1,
+    borderRadius: 5,
+    height: 70,
   },
   answerText: {
     fontSize: 22,
-    color: '#ebebeb'
+    color: '#ebebeb',
+    textAlign: 'center',
   },
   startButton: {
     borderWidth: 2,
     borderColor: '#ebebeb',
     padding: 12,
-    paddingLeft: 100,
-    paddingRight: 100,
+    paddingLeft: 120,
+    paddingRight: 120,
+    borderRadius: 5,
   },
   startButtonText: {
     textAlign: 'center',

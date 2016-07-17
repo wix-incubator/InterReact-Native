@@ -82,7 +82,6 @@ const styles = StyleSheet.create(
       left: 20,
       height: 180,
       width: width - 40,
-      borderWidth: 3,
       borderRadius: 5,
       borderColor: '#ebebeb'
     },

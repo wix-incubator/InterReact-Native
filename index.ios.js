@@ -41,7 +41,7 @@ firebaseService.readConf().then(data => {
       },
     ],
     tabsStyle: {
-      tabBarSelectedButtonColor: '#52489C',
+      tabBarSelectedButtonColor: '#165574',
       tabBarBackgroundColor: '#EBEBEB'
     },
 

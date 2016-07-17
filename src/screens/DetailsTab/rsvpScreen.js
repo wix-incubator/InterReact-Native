@@ -51,8 +51,8 @@ class FirstTabScreen extends Component {
       <View style={styles.container}>
 
         <View style={{marginBottom: 20}}>
-          <Text style={{color: '#ffffff', fontSize: 42, fontWeight: '600'}}>{details.title}</Text>
-          <Text style={{color: '#cad2c5', fontSize: 16, fontWeight: '500'}}>{details.description}</Text>
+          <Text style={{color: '#ffffff', fontSize: 28}}>{details.title}</Text>
+          <Text style={{color: '#ffffff', fontSize: 16, fontWeight: '500'}}>{details.description}</Text>
         </View>
 
         {_.map(form, (field, index) => (
@@ -78,7 +78,7 @@ class FirstTabScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#84a98c',
+    backgroundColor: '#59c6cb',
     padding: 20,
   },
   inputLabel: {
@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
     borderColor: '#ebebeb',
     color: '#ffffff',
     paddingLeft: 8,
+    borderRadius: 5,
   },
   submitButton: {
     borderWidth: 2,
@@ -98,12 +99,12 @@ const styles = StyleSheet.create({
     padding: 12,
     paddingLeft: 100,
     paddingRight: 100,
+    borderRadius: 5,
   },
   submitButtonText: {
     textAlign: 'center',
     color: '#ebebeb',
     fontSize: 28,
-    fontWeight: '600'
   }
 });
 

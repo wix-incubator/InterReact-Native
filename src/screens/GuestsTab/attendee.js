@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
   nameText: {
     fontSize: 22,
-    color: '#52489c'
+    color: '#165574'
   },
   companyText: {
     fontSize: 16,

@@ -24,7 +24,7 @@ class Org extends Component {
   render() {
     const {name, length} = this.props;
     return (
-      <View style={{flexDirection: 'row', padding: 5}}>
+      <View style={{flexDirection: 'row', padding: 0}}>
 
         <Animated.View style={[styles.orgLength, {width: this.state.barWidth}]}>
         </Animated.View>
@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#ebebeb'
   },
   orgLength: {
-    backgroundColor: '#84A98C',
-    padding: 5,
+    backgroundColor: '#59c6cb',
+    padding: 20,
     height: 40,
     marginBottom: 10,
     marginTop: 10,

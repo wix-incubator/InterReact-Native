@@ -10,7 +10,7 @@ const Overview = ({attendees}) => {
   const attendeesData = _.get(attendees, 'attendeesData');
   if (attendeesData) {
     return (<View style={styles.container}>
-      <Text style={{fontSize: 28, color: '#52489c', fontWeight: '500'}}>{attendeesData.length} GUESTS ATTENDING</Text>
+      <Text style={{fontSize: 28, color: '#165574'}}>{attendeesData.length} Guests Attending</Text>
       <View style={{marginTop: 10}}>
         <ScrollView contentInset={{top: 0, left: 0, bottom: 300, right: 0}} showsVerticalScrollIndicator={false}>
           <Text>Company</Text>
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ebebeb'
   },
   orgLength: {
-    backgroundColor: '#59C3C3',
+    backgroundColor: '#165574',
     padding: 5,
     height: 40,
     marginBottom: 10,
