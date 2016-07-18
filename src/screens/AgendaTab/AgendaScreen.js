@@ -9,7 +9,8 @@ import {
   TouchableOpacity,
   Animated,
   AlertIOS,
-  ScrollView
+  ScrollView,
+  Alert,
 } from 'react-native';
 import {connect} from 'react-redux';
 import * as Animatable from 'react-native-animatable';
@@ -36,6 +37,7 @@ class AgendaScreen extends Component {
     super(props);
     this.renderImage=this.renderImage.bind(this);
     this.renderTalk=this.renderTalk.bind(this);
+    this.talkPressed=this.talkPressed.bind(this);
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     this.state = {
 
@@ -83,9 +85,31 @@ class AgendaScreen extends Component {
               </View>
           </View>
           <Text style={styles.contentText}>{talk.content}</Text>
+          {talk.link.link != '' ? <TouchableOpacity onPress={() => this.talkPressed(talk)}><Text style={{color: 'white'}}>{talk.link.title}</Text></TouchableOpacity> : <View></View>}
         </View>
       </View>
     );
+  }
+
+  talkPressed(talk) {
+    if (talk.link.link == 'some_link') {
+      if (talk.link.enabled) {
+        Navigation.showModal({
+          screen: 'example.DemoScreen',
+          title: 'Demo',
+          navigatorStyle: {},
+          navigatorButtons: {
+            leftButtons: [{
+              title: 'Cancel',
+              id: 'navBarCancel'
+            }]
+          }
+        });
+      }
+      else {
+        Alert.alert("Link isn't enabled yet", "The link is not enabled. The host will enable it during the event.")
+      }
+    }
   }
 
   render() {

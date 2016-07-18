@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     paddingLeft: 100,
     paddingRight: 100,
     width: width - 40,
-    borderRadius: 5,
+    borderRadius: 3,
   },
   rsvpButtonText: {
     color: '#ebebeb',

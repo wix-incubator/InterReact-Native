@@ -6,7 +6,8 @@ import {
   Text,
   View,
   TouchableOpacity,
-  TextInput
+  TextInput,
+  Alert,
 } from 'react-native';
 import {mapStateToProps} from '../../store';
 import * as actions from '../../store/constants/actions';
@@ -39,10 +40,16 @@ class FirstTabScreen extends Component {
 
   submitRSVP() {
     //console.error(this.guest)
-    this.props.dispatch({type: actions.ATTENDEES_SEND_RSVP, data: this.guest});
-    Navigation.dismissModal({
-      animationType: 'slide-down'
-    });
+    if (this.guest.name != '' && this.guest.org != '' && this.guest.experience != '') {
+      this.props.dispatch({type: actions.ATTENDEES_SEND_RSVP, data: this.guest});
+      Navigation.dismissModal({
+        animationType: 'slide-down'
+      });
+    }
+    else {
+      Alert.alert("Please enter your details above...");
+    }
+
   }
 
   render() {

@@ -57,7 +57,7 @@ class LoginScreen extends Component {
   }
 
   submitButtonClicked() {
-    const password = ''
+    const password = 'host_pass'
     if (this.passwordTextField === password) {
       this.setState({screenState: QUESTIONS_SCREEN});
     }
