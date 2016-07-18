@@ -95,15 +95,15 @@ export default class Countdown extends TimerComponent {
       <View style={styles.container}>
 
         {_.map(countdown, (timeUnit, index) => (
-          <View key={index} style={styles.timeUnit}>
-            <Text style={styles.timeUnitText}>
-              {timeUnit.value}
-            </Text>
-            <View style={styles.timeUnitLabel}>
+            <View style={styles.timeUnit}>
               <Text style={styles.timeUnitLabelText}>{timeUnit.label}</Text>
+              <View style={styles.timeUnit}>
+                <Text style={styles.timeUnitText}>{timeUnit.value}</Text>
+              </View>
             </View>
-          </View>))
-          }
+
+          ))
+        }
       </View>
     )
   }
@@ -113,31 +113,30 @@ const styles = StyleSheet.create({
   container: {flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingLeft: 50,
-    paddingRight: 30
+    justifyContent: 'center',
+
   },
   beganContainer: {
     flex: 1,
     backgroundColor: '#24b37a',
   },
-
   timeUnit: {
-    width: 60,
-    height: 50
+    paddingLeft: 10,
+    paddingRight: 10,
   },
   timeUnitText: {
     fontSize: 40,
     color: '#165574', // Was #52489c
     paddingRight: 10,
+    textAlign: 'center',
   },
   timeUnitLabel: {
-    position: 'absolute',
-    top: -7,
-    left: 0
+
   },
   timeUnitLabelText: {
     fontSize: 10,
-    color: '#165574',
+    color: '#165574', // Was #52489c
+    paddingRight: 10,
+    textAlign: 'center',
   }
 });

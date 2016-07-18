@@ -3,11 +3,13 @@ import * as actions from '../constants/actions';
 import {details} from './details';
 import {attendees} from './attendees';
 import {questions} from './questions';
+import {agenda} from './agenda';
 
 import reduceReducers from 'reduce-reducers';
 
 export default reduceReducers(
   combineReducers({
+    agenda,
     details,
     attendees,
     questions,

@@ -20,6 +20,7 @@ class SecondTabScreen extends Component {
     navBarNoBorder: true,
     navBarBackgroundColor: Constants.navBarBackgroundColor,
     navBarTextColor: Constants.navBarTextColor,
+    navBarHidden: true,
   };
 
   constructor(props) {
@@ -40,7 +41,7 @@ class SecondTabScreen extends Component {
               selectedLineHeight: 2,
               fontSize:17,
               fontWeight: 'bold', // bold, italic, regular (default)
-              segmentBackgroundColor: '#52489C11',
+              segmentBackgroundColor: '#e6e6e6',
               segmentTextColor: '#000000',
               segmentHighlightTextColor: '#7a92a599',
               selectedLineColor: '#165574',
@@ -74,12 +75,12 @@ class SecondTabScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#165574',
+    backgroundColor: '#e6e6e6',
   },
   segmented: {
     height: 50,
     width: width,
-    backgroundColor: '#EBEBEB'
+    marginTop: 20,
     //marginVertical: 8
   }
 });

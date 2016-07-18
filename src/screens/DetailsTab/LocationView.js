@@ -57,7 +57,7 @@ export default class LocationView extends Component {
           ]
         }
 
-        scrollEnabled={false}
+        scrollEnabled={true}
         pitchEnabled={false}
         rotateEnabled={false}
         showsCompass={false}
@@ -77,13 +77,10 @@ export default class LocationView extends Component {
 const styles = StyleSheet.create(
   {
     mapContainer: {
-      position: 'absolute',
-      top: -80,
-      left: 20,
-      height: 180,
+      flex: 1,
       width: width - 40,
-      borderRadius: 5,
-      borderColor: '#ebebeb'
+      borderRadius: 3,
+      borderColor: '#ebebeb',
     },
   }
 )

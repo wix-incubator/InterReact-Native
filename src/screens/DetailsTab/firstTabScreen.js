@@ -29,6 +29,7 @@ class FirstTabScreen extends Component {
   static navigatorStyle = {
     navBarBackgroundColor: Constants.navBarBackgroundColor,
     navBarTextColor: Constants.navBarTextColor,
+    navBarHidden: true,
     navBarBlur: true,
   };
 
@@ -61,29 +62,26 @@ class FirstTabScreen extends Component {
   }
   render() {
     const {details} = this.props;
-    const dateString = moment(details.startDate).format('MMMM DD - HH:mm');
+    const dateString = moment(details.startDate).format('MMMM DD • HH:mm');
     return (
-      <ParallaxView
-        style={{backgroundColor: '#165574', height: 80}}
-        backgroundSource={{uri: details.logoImageURL}}
-        windowHeight={80}>
-        <ScrollView style={styles.container}>
-          <View style={styles.countdownSection}>
-            <Countdown ticker={this.ticker} startTime={details.startDate}/>
-          </View>
 
-          <View style={styles.detailsSection}>
-            <View style={{justifyContent: 'center'}}>
-              <Text style={{color: '#ffffff', fontSize: 28, }}>{details.title}</Text>
-              <Text style={{color: '#cad2c5', fontSize: 16, fontWeight: '500'}}>{details.description}</Text>
-              <Text style={{marginTop: 15, color: '#ffffff', fontSize: 28, marginBottom: 80}}>{dateString} &#x2022;{details.city.toUpperCase()} </Text>
+      <View style={styles.container}>
+        <Image style={{height: 120, marginVertical: 15}} source={{uri: details.logoImageURL}} />
+        <View style={styles.countdownSection}>
+          <Countdown ticker={this.ticker} startTime={details.startDate}/>
+        </View>
+
+        <View style={styles.detailsSection}>
+          <View style={{justifyContent: 'center', height: 100}}>
+          {   /*<Text style={{color: '#ffffff', fontSize: 28, }}>{details.title}</Text>
+                <Text style={{color: '#cad2c5', fontSize: 16, fontWeight: '500'}}>{details.description}</Text>*/}
+            <View style={{paddingTop: 15}}>
+              <Text style={styles.detailsText}>{dateString} &#x2022;{' '}{details.city.toUpperCase()}</Text>
+              <Text style={styles.detailsText, {fontSize: 15, color: '#cccccc'}}>{details.detailedLocation}</Text>
             </View>
           </View>
-          <View style={styles.rsvpSection}>
-            <TouchableOpacity style={styles.rsvpButton} onPress={this.rsvp}>
-              <Text style={styles.rsvpButtonText}>RSVP</Text>
-            </TouchableOpacity>
-            <LocationView
+          <View style={styles.mapContainer}>
+          <LocationView
               title={details.title}
               description={details.detailedLocation}
               latitude={details.location.latitude}
@@ -91,8 +89,14 @@ class FirstTabScreen extends Component {
             >
             </LocationView>
           </View>
-        </ScrollView>
-      </ParallaxView>
+          <View style={styles.rsvpSection}>
+            <TouchableOpacity style={styles.rsvpButton} onPress={this.rsvp}>
+              <Text style={styles.rsvpButtonText}>RSVP</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+      </View>
     );
   }
 }
@@ -100,31 +104,22 @@ class FirstTabScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#165574',
+    paddingTop: 20,
   },
   countdownSection: {
-    flex: 0.5,
     paddingTop: 10,
     backgroundColor: '#ebebeb',
-    paddingLeft: 25,
-    paddingRight: 25,
   },
   detailsSection: {
     flex: 1,
     backgroundColor: '#165574',
-    paddingLeft: 25,
-    paddingRight: 25,
-    paddingTop: 40,
-    paddingBottom: 120,
+    alignItems: 'center',
+    padding: 2,
   },
   rsvpSection: {
-    flex: 1,
-    paddingTop: 120,
-    paddingLeft: 25,
-    paddingRight: 25,
+    height: 80,
+    padding: 15,
     backgroundColor: '#165574',
-    alignItems: 'center',
-    paddingBottom: 60
   },
   rsvpButton: {
     borderWidth: 2,
@@ -137,18 +132,17 @@ const styles = StyleSheet.create({
   },
   rsvpButtonText: {
     color: '#ebebeb',
-    fontSize: 28,
+    fontSize: 20,
     textAlign: 'center'
   },
-  mapContainer: {
-    position: 'absolute',
-    top: -80,
-    left: 20,
-    height: 180,
-    width: width - 40,
-    borderWidth: 3,
-    borderColor: '#ebebeb'
+  detailsText: {
+    color: '#ffffff',
+    fontSize: 27,
   },
+  mapContainer: {
+    flex: 1,
+    justifyContent: 'center',
+  }
 });
 
 export default connect(mapStateToProps)(FirstTabScreen);

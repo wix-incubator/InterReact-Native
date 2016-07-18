@@ -25,19 +25,29 @@ firebaseService.readConf().then(data => {
         label: 'Details',
         screen: 'example.FirstTabScreen', // this is a registered name for a screen
         title: 'Details',
-        icon: require('./src/images/eventIcon.png'),
+        icon: require('./src/images/details.png'),
+        selectedIcon: require('./src/images/details_selected.png'),
+      },
+      {
+        label: 'Agenda',
+        screen: 'example.AgendaScreen',
+        title: 'Agenda',
+        icon: require('./src/images/agenda.png'),
+        selectedIcon: require('./src/images/agenda_selected.png'),
       },
       {
         label: 'Guests',
         screen: 'example.SecondTabScreen', // this is a registered name for a screen
         title: 'Guests',
         icon: require('./src/images/guests.png'),
+        selectedIcon: require('./src/images/guests_selected.png'),
       },
       {
         label: 'Live',
         screen: 'example.ThirdTabScreen', // this is a registered name for a screen
         title: 'Live',
         icon: require('./src/images/live.png'),
+        selectedIcon: require('./src/images/live_selected.png'),
       },
     ],
     tabsStyle: {
