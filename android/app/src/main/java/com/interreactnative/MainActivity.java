@@ -1,20 +1,22 @@
 package com.interreactnative;
 
 import com.facebook.react.ReactActivity;
+import com.airbnb.android.react.maps.MapsPackage;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
+import com.higo.zhangyp.segmented.AndroidSegmentedPackage;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends ReactActivity {
+public class MainActivity extends com.reactnativenavigation.activities.RootActivity {
 
     /**
      * Returns the name of the main component registered from JavaScript.
      * This is used to schedule rendering of the component.
      */
     @Override
-    protected String getMainComponentName() {
+    public String getMainComponentName() {
         return "InterReactNative";
     }
 
@@ -23,7 +25,7 @@ public class MainActivity extends ReactActivity {
      * This enables e.g. the dev menu.
      */
     @Override
-    protected boolean getUseDeveloperSupport() {
+    public boolean getUseDeveloperSupport() {
         return BuildConfig.DEBUG;
     }
 
@@ -32,9 +34,12 @@ public class MainActivity extends ReactActivity {
      * or modules besides the default ones, add more packages here.
      */
     @Override
-    protected List<ReactPackage> getPackages() {
+    public List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
-            new MainReactPackage()
+            new MainReactPackage(),
+            new MapsPackage(this), new com.reactnativenavigation.packages.RnnPackage(),
+            new AndroidSegmentedPackage()
+
         );
     }
 }

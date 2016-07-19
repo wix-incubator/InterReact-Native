@@ -2,12 +2,13 @@ import _ from 'lodash';
 import React, {Component} from 'react';
 import {
   StyleSheet,
+  Platform,
+  Alert,
   Text,
   Image,
   View,
   TouchableOpacity,
   Animated,
-  AlertIOS,
   ScrollView
 } from 'react-native';
 import {mapStateToProps} from '../../store';
@@ -49,6 +50,10 @@ class ThirdTabScreen extends Component {
   onNavigatorEvent(event) {
     if (event.type == 'NavBarButtonPress') {
       if (event.id == 'host') {
+        if (Platform.os != 'ios') {
+          Alert.alert('You cannot perform this operation...');
+          return;
+        }
         Navigation.showModal({
           screen: 'live.loginScreen',
           title: 'Login',

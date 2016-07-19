@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   Image,
+  Platform,
   View,
   PixelRatio,
   TouchableOpacity,
@@ -94,12 +95,17 @@ class AgendaScreen extends Component {
   talkPressed(talk) {
     if (talk.link.link == 'some_link') {
       if (talk.link.enabled) {
+        let screen = 'example.DemoScreenAndroid'
+        if (Platform.OS == 'ios') {
+          screen = 'example.DemoScreenIOS';
+        }
+
         Navigation.showModal({
-          screen: 'example.DemoScreen',
+          screen: screen,
           title: 'Demo',
           navigatorStyle: {},
           navigatorButtons: {
-            leftButtons: [{
+            rightButtons: [{
               title: 'Cancel',
               id: 'navBarCancel'
             }]

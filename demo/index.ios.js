@@ -14,7 +14,7 @@ import AnimatedLibExample from './d-animated-lib';
 import {connect} from 'react-redux';
 import {Navigation} from 'react-native-navigation';
 
-class example extends Component {
+class IOSExample extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -101,4 +101,4 @@ function mapStateToProps(state) {
   return state.agenda
 }
 
-export default connect(mapStateToProps)(example);
+export default connect(mapStateToProps)(IOSExample);

@@ -7,7 +7,6 @@ import {
   View,
   TouchableOpacity,
   Animated,
-  AlertIOS,
   ScrollView,
   Alert,
 } from 'react-native';

@@ -2,6 +2,7 @@ import moment from 'moment';
 import React, { Component } from 'react';
 import {
   AppRegistry,
+  Platform,
   StyleSheet,
   Text,
   View,
@@ -44,7 +45,7 @@ class FirstTabScreen extends Component {
       title: 'RSVP',
       navigatorStyle: {},
       navigatorButtons: {
-        leftButtons: [{
+        rightButtons: [{
           title: 'Cancel',
           id: 'navBarCancel'
         }]
@@ -63,10 +64,12 @@ class FirstTabScreen extends Component {
   render() {
     const {details} = this.props;
     const dateString = moment(details.startDate).format('MMMM DD • HH:mm');
+
+    const marginVertical = Platform.OS == 'ios' ? 15 : 0;
     return (
 
       <View style={styles.container}>
-        <Image style={{height: 120, marginVertical: 15}} source={{uri: details.logoImageURL}} />
+        <Image style={{height: 120, marginVertical}} source={{uri: details.logoImageURL}} />
         <View style={styles.countdownSection}>
           <Countdown ticker={this.ticker} startTime={details.startDate}/>
         </View>
@@ -75,7 +78,7 @@ class FirstTabScreen extends Component {
           <View style={{justifyContent: 'center', height: 100}}>
           {   /*<Text style={{color: '#ffffff', fontSize: 28, }}>{details.title}</Text>
                 <Text style={{color: '#cad2c5', fontSize: 16, fontWeight: '500'}}>{details.description}</Text>*/}
-            <View style={{paddingTop: 15}}>
+            <View>
               <Text style={styles.detailsText}>{dateString} &#x2022;{' '}{details.city.toUpperCase()}</Text>
               <Text style={styles.detailsText, {fontSize: 15, color: '#cccccc'}}>{details.detailedLocation}</Text>
             </View>
@@ -104,7 +107,7 @@ class FirstTabScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 20,
+    paddingTop: Platform.OS == 'ios' ? 20 : 0,
   },
   countdownSection: {
     paddingTop: 10,
