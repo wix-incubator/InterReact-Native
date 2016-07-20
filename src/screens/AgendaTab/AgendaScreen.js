@@ -95,10 +95,7 @@ class AgendaScreen extends Component {
   talkPressed(talk) {
     if (talk.link.link == 'some_link') {
       if (talk.link.enabled) {
-        let screen = 'example.DemoScreenAndroid'
-        if (Platform.OS == 'ios') {
-          screen = 'example.DemoScreenIOS';
-        }
+        let screen = 'example.DemoScreen'
 
         Navigation.showModal({
           screen: screen,
