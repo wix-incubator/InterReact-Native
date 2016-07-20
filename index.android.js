@@ -25,34 +25,31 @@ firebaseService.readConf().then(data => {
         label: 'Details',
         screen: 'example.FirstTabScreen', // this is a registered name for a screen
         title: 'Details',
-        icon: require('./src/images/details.png'),
-        selectedIcon: require('./src/images/details_selected.png'),
+        icon: require('./src/images/Android/details.png'),
       },
       {
         label: 'Agenda',
         screen: 'example.AgendaScreen',
         title: 'Agenda',
-        icon: require('./src/images/agenda.png'),
-        selectedIcon: require('./src/images/agenda_selected.png'),
+        icon: require('./src/images/Android/agenda.png'),
       },
       {
         label: 'Guests',
         screen: 'example.SecondTabScreen', // this is a registered name for a screen
         title: 'Guests',
-        icon: require('./src/images/guests.png'),
-        selectedIcon: require('./src/images/guests_selected.png'),
+        icon: require('./src/images/Android/guests.png'),
       },
       {
         label: 'Live',
         screen: 'example.ThirdTabScreen', // this is a registered name for a screen
         title: 'Live',
-        icon: require('./src/images/live.png'),
-        selectedIcon: require('./src/images/live_selected.png'),
+        icon: require('./src/images/Android/live.png'),
       },
     ],
     tabsStyle: {
-      tabBarSelectedButtonColor: '#165574',
-      tabBarBackgroundColor: '#EBEBEB'
+      tabBarButtonColor: '#b1edff',
+      tabBarSelectedButtonColor: '#ffffff',
+      tabBarBackgroundColor: '#4ebee6',
     },
 
   })
