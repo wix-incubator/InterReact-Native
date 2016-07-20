@@ -6,8 +6,8 @@ import SecondTabScreen from './GuestsTab/secondTabScreen';
 import ThirdTabScreen from './LiveTab/thirdTabScreen';
 import LoginScreen from './LiveTab/LoginScreen';
 import AgendaScreen from './AgendaTab/AgendaScreen';
-import IOSExample from '../../demo/index.ios'
-import AndroidExample from '../../demo/index.android'
+import Example from '../demo/index';
+
 
 import {store} from '../store';
 import {Provider} from 'react-redux';
@@ -20,7 +20,7 @@ export function registerScreens() {
   Navigation.registerComponent('live.loginScreen', () => LoginScreen, store, Provider)
   Navigation.registerComponent('example.ThirdTabScreen', () => ThirdTabScreen, store, Provider);
   Navigation.registerComponent('example.AgendaScreen', () => AgendaScreen, store, Provider);
-  Navigation.registerComponent('example.DemoScreenIOS', () => IOSExample, store, Provider);
-  Navigation.registerComponent('example.DemoScreenAndroid', () => AndroidExample, store, Provider);
+  Navigation.registerComponent('example.DemoScreen', () => Example, store, Provider);
+
 
 }

@@ -1,6 +1,5 @@
 package com.interreactnative;
 
-import com.facebook.react.ReactActivity;
 import com.airbnb.android.react.maps.MapsPackage;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -38,7 +37,7 @@ public class MainActivity extends RootActivity {
     public List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
-            new MapsPackage(this),
+            new MapsPackage(),
             new RnnPackage()
 
         );
