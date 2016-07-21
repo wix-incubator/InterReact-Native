@@ -37,6 +37,8 @@ public class MainActivity extends RootActivity {
     public List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
+            new RnnPackage(),
+            new MapsPackage(),
             new MapsPackage(),
             new RnnPackage()
 

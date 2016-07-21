@@ -25,6 +25,8 @@
 		263E91C41D1B2BCF001DD79A /* libReactNativeControllers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 263E91C31D1B2BC7001DD79A /* libReactNativeControllers.a */; };
 		263E91EC1D1BDA42001DD79A /* libCustomSegmentedControl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 263E91E01D1BDA39001DD79A /* libCustomSegmentedControl.a */; };
 		27763C0C8CB345F38A9FFC94 /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69EC1AE7A9684FC0815F9BF0 /* libAirMaps.a */; };
+		4BF80BD61D40B5E90084346C /* RNSwipeableContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF80BD31D40B5E90084346C /* RNSwipeableContainer.m */; };
+		4BF80BD71D40B5E90084346C /* RNSwipeableContainerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF80BD51D40B5E90084346C /* RNSwipeableContainerManager.m */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 /* End PBXBuildFile section */
 
@@ -151,6 +153,10 @@
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		263E91B41D1B2BC7001DD79A /* ReactNativeControllers.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeControllers.xcodeproj; path = "../node_modules/react-native-controllers/ios/ReactNativeControllers.xcodeproj"; sourceTree = "<group>"; };
 		263E91DB1D1BDA39001DD79A /* CustomSegmentedControl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CustomSegmentedControl.xcodeproj; path = "../node_modules/react-native-custom-segmented-control/ios/lib/CustomSegmentedControl.xcodeproj"; sourceTree = "<group>"; };
+		4BF80BD21D40B5E90084346C /* RNSwipeableContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNSwipeableContainer.h; sourceTree = "<group>"; };
+		4BF80BD31D40B5E90084346C /* RNSwipeableContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSwipeableContainer.m; sourceTree = "<group>"; };
+		4BF80BD41D40B5E90084346C /* RNSwipeableContainerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNSwipeableContainerManager.h; sourceTree = "<group>"; };
+		4BF80BD51D40B5E90084346C /* RNSwipeableContainerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSwipeableContainerManager.m; sourceTree = "<group>"; };
 		69EC1AE7A9684FC0815F9BF0 /* libAirMaps.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libAirMaps.a; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
@@ -265,6 +271,10 @@
 		13B07FAE1A68108700A75B9A /* InterReactNative */ = {
 			isa = PBXGroup;
 			children = (
+				4BF80BD21D40B5E90084346C /* RNSwipeableContainer.h */,
+				4BF80BD31D40B5E90084346C /* RNSwipeableContainer.m */,
+				4BF80BD41D40B5E90084346C /* RNSwipeableContainerManager.h */,
+				4BF80BD51D40B5E90084346C /* RNSwipeableContainerManager.m */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -639,6 +649,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				4BF80BD61D40B5E90084346C /* RNSwipeableContainer.m in Sources */,
+				4BF80BD71D40B5E90084346C /* RNSwipeableContainerManager.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -723,6 +735,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rntlv.meetup;
 				PRODUCT_NAME = InterReactNative;
 				PROVISIONING_PROFILE = "";
 			};
@@ -747,6 +760,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rntlv.meetup;
 				PRODUCT_NAME = InterReactNative;
 				PROVISIONING_PROFILE = "";
 			};

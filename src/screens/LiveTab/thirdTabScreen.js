@@ -50,7 +50,7 @@ class ThirdTabScreen extends Component {
   onNavigatorEvent(event) {
     if (event.type == 'NavBarButtonPress') {
       if (event.id == 'host') {
-        if (Platform.os != 'ios') {
+        if (Platform.OS != 'ios') {
           Alert.alert('You cannot perform this operation...');
           return;
         }
@@ -201,6 +201,7 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   answer: {
+    flex: 1,
     justifyContent: 'center',
     marginBottom: 20,
     padding: 20,
@@ -209,7 +210,6 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#bebebe',
     borderRadius: 5,
-    height: 70,
   },
   answerText: {
     fontSize: 22,
