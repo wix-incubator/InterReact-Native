@@ -6,6 +6,8 @@ import SecondTabScreen from './GuestsTab/secondTabScreen';
 import ThirdTabScreen from './LiveTab/thirdTabScreen';
 import LoginScreen from './LiveTab/LoginScreen';
 import AgendaScreen from './AgendaTab/AgendaScreen';
+import ArchiveScreen from './ArchiveTab/ArchiveScreen';
+import EventMaterialsScreen from './ArchiveTab/EventMaterialsScreen';
 import Example from '../demo/index';
 
 
@@ -21,6 +23,7 @@ export function registerScreens() {
   Navigation.registerComponent('example.ThirdTabScreen', () => ThirdTabScreen, store, Provider);
   Navigation.registerComponent('example.AgendaScreen', () => AgendaScreen, store, Provider);
   Navigation.registerComponent('example.DemoScreen', () => Example, store, Provider);
-
+  Navigation.registerComponent('example.ArchiveScreen', () => ArchiveScreen, store, Provider);
+  Navigation.registerComponent('example.EventMaterialsScreen', () => EventMaterialsScreen, store, Provider)
 
 }

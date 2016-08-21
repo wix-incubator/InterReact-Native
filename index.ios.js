@@ -43,6 +43,13 @@ firebaseService.readConf().then(data => {
         selectedIcon: require('./src/images/iOS/guests_selected.png'),
       },
       {
+        label: 'Archive',
+        screen: 'example.ArchiveScreen',
+        title: 'Archive',
+        icon: require('./src/images/iOS/archive.png'),
+        selectedIcon: require('./src/images/iOS/archive_selected.png'),
+      },
+      {
         label: 'Live',
         screen: 'example.ThirdTabScreen', // this is a registered name for a screen
         title: 'Live',

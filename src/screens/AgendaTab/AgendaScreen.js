@@ -56,7 +56,6 @@ class AgendaScreen extends Component {
   }
 
   renderImage(talk) {
-    console.log('talk.image: ', talk.image);
     if (_.startsWith(talk.image, 'http')) {
       return (<Image style={styles.presenterImage} source={{uri: talk.image}} />);
     }
